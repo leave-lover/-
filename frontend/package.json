@@ -8,7 +8,8 @@
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "dev:all": "concurrently \"npm run dev\" \"cd ..\\backend && python app.py\""
+    "dev:all": "concurrently \"npm run dev\" \"cd ..\\backend && python app.py\"",
+    "process:data": "cd ..\\backend && python data_processor.py"
   },
   "dependencies": {
     "@types/react-plotly.js": "^2.6.3",
