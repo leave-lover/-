@@ -4,13 +4,11 @@ interface SidebarProps {
   // 预留props接口，支持未来功能扩展
   className?: string;
   collapsed?: boolean;
-  onToggle?: () => void;
 }
 
 const Sidebar: React.FC<SidebarProps> = ({
   className = "",
   collapsed = false,
-  onToggle,
 }) => {
   return (
     <aside

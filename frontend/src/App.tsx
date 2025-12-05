@@ -1,5 +1,7 @@
 import React from 'react';
 import Sidebar from './components/Sidebar';
+import TopologyGraph from './components/TopologyGraph';
+import './components/TopologyGraph.css';
 
 const App: React.FC = () => {
   return (
@@ -10,8 +12,9 @@ const App: React.FC = () => {
       {/* 主内容区域 */}
       <main className="main-content">
         <div className="content-wrapper">
-          <h1>Hello World</h1>
+          <h1>能源网络拓扑可视化</h1>
           <p>欢迎来到能源防御与攻击平台！</p>
+          <TopologyGraph />
         </div>
       </main>
     </div>
