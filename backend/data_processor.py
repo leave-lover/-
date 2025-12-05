@@ -344,11 +344,16 @@ def main():
     主函数
     """
     # 输入文件路径
-    input_file = 'data/raw/电39-气20.txt'
+    input_file = os.path.join('backend', 'data', 'raw', '电39-气20.txt')
     
     # 输出目录
-    processed_dir = 'data/processed'
-    normalized_dir = 'data/normalized'
+    processed_dir = os.path.join('backend', 'data', 'processed')
+    normalized_dir = os.path.join('backend', 'data', 'normalized')
+    
+    # 检查输入文件是否存在
+    if not os.path.exists(input_file):
+        print(f"错误: 找不到输入文件 {input_file}")
+        return
     
     # 解析原始数据
     print("正在解析原始数据...")

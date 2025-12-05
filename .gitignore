@@ -46,3 +46,28 @@ Thumbs.db
 .Spotlight-V100
 .Trashes
 ehthumbs.db
+
+# Virtual environments
+venv/
+env/
+ENV/
+.energy_env/
+energy_env/
+
+# IDE specific files
+*.idea
+*.vscode
+
+# Compiled Python files
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+.Python
+*.so
+.coverage
+.pytest_cache/
+.coverage.*
+htmlcov/
+.tox/
+.nox/
