@@ -53,6 +53,7 @@ env/
 ENV/
 .energy_env/
 energy_env/
+energy_venv_new/
 
 # IDE specific files
 *.idea

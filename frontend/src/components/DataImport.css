@@ -1,0 +1,140 @@
+.data-import {
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.data-import h2 {
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.upload-area {
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  padding: 30px;
+  text-align: center;
+  margin-bottom: 20px;
+  background-color: #fff;
+  transition: border-color 0.3s ease;
+}
+
+.upload-area:hover {
+  border-color: #007bff;
+}
+
+.upload-content {
+  position: relative;
+}
+
+.upload-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.upload-area p {
+  margin: 10px 0;
+  color: #666;
+}
+
+#file-input {
+  display: none;
+}
+
+.file-select-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 10px 0;
+}
+
+.file-select-button:hover {
+  background-color: #0056b3;
+}
+
+.file-select-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.selected-file {
+  font-weight: bold;
+  color: #007bff;
+  margin-top: 10px;
+}
+
+.upload-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.upload-button:hover:not(:disabled) {
+  background-color: #218838;
+}
+
+.upload-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.status-message {
+  padding: 12px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.status-success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.status-error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.status-info {
+  background-color: #d1ecf1;
+  color: #0c5460;
+  border: 1px solid #bee5eb;
+}
+
+.import-instructions {
+  background-color: #e9ecef;
+  border-radius: 4px;
+  padding: 15px;
+}
+
+.import-instructions h3 {
+  margin-top: 0;
+  color: #495057;
+}
+
+.import-instructions ul {
+  padding-left: 20px;
+  margin: 10px 0;
+}
+
+.import-instructions li {
+  margin-bottom: 8px;
+  color: #6c757d;
+}

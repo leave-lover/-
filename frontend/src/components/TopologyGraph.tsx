@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import ForceGraph2D from "react-force-graph-2d";
 import "./TopologyGraph.css";
 
@@ -25,53 +25,64 @@ interface Link {
   [key: string]: any;
 }
 
-const TopologyGraph: React.FC = () => {
+interface TopologyGraphProps {
+  refreshTrigger?: number; // 用于触发数据刷新的属性
+}
+
+const TopologyGraph: React.FC<TopologyGraphProps> = ({
+  refreshTrigger = 0,
+}) => {
   const [graphData, setGraphData] = useState<{ nodes: Node[]; links: Link[] }>({
     nodes: [],
     links: [],
   });
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [localRefreshTrigger, setRefreshTrigger] = useState(0); // 用于触发数据刷新的状态
+
+  // 封装获取数据的函数，便于重用
+  const fetchGraphData = useCallback(async () => {
+    try {
+      setIsLoading(true);
+      setError(null);
+
+      // 首先尝试从/api/graph获取完整图数据
+      const response = await fetch("http://localhost:5000/api/graph");
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      // 根据节点类型确定group属性
+      const nodesWithGroups = data.nodes.map((node: Node) => {
+        let group = "other";
+        if (node.type === "electric_bus") {
+          group = "bus";
+        } else if (node.type === "generator") {
+          group = "generator";
+        } else if (node.type === "gas_node" || node.type === "gas_source") {
+          group = node.type === "gas_source" ? "source" : "gas";
+        }
+        return { ...node, group };
+      });
+
+      setGraphData({
+        nodes: nodesWithGroups,
+        links: data.links,
+      });
+      setIsLoading(false);
+    } catch (err) {
+      console.error("Failed to fetch graph data:", err);
+      setError("Failed to load graph data from backend");
+      setIsLoading(false);
+    }
+  }, []);
 
   // 从后端API获取数据
   useEffect(() => {
-    const fetchGraphData = async () => {
-      try {
-        // 首先尝试从/api/graph获取完整图数据
-        const response = await fetch("http://localhost:5000/api/graph");
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
-
-        // 根据节点类型确定group属性
-        const nodesWithGroups = data.nodes.map((node: Node) => {
-          let group = "other";
-          if (node.type === "electric_bus") {
-            group = "bus";
-          } else if (node.type === "generator") {
-            group = "generator";
-          } else if (node.type === "gas_node" || node.type === "gas_source") {
-            group = node.type === "gas_source" ? "source" : "gas";
-          }
-          return { ...node, group };
-        });
-
-        setGraphData({
-          nodes: nodesWithGroups,
-          links: data.links,
-        });
-        setIsLoading(false);
-      } catch (err) {
-        console.error("Failed to fetch graph data:", err);
-        setError("Failed to load graph data from backend");
-        setIsLoading(false);
-      }
-    };
-
     fetchGraphData();
-  }, []);
+  }, [fetchGraphData, refreshTrigger, localRefreshTrigger]);
 
   // 获取节点颜色
   const getNodeColor = (group: string) => {

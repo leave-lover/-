@@ -57,6 +57,39 @@ body {
   overflow-y: auto;
 }
 
+/* 侧边栏区块 */
+.sidebar-section {
+  padding: 0 20px 20px 20px;
+}
+
+/* 侧边栏标题 */
+.sidebar__header h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  text-align: center;
+}
+
+/* 折叠侧边栏底部 */
+.collapsed-sidebar-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.collapsed-sidebar-footer span {
+  transform: rotate(-90deg);
+  white-space: nowrap;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #666;
+}
+
 /* 侧边栏底部 */
 .sidebar__footer {
   height: 64px;
