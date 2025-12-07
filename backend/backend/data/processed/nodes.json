@@ -648,53 +648,5 @@
     "pressure_max": 66.2,
     "pressure_min": 25.0,
     "load": 31.62
-  },
-  {
-    "id": "GS1",
-    "name": "Gas Source 1",
-    "type": "gas_source",
-    "connected_bus": 1,
-    "min_w": 0.9,
-    "max_w": 1.7391
-  },
-  {
-    "id": "GS2",
-    "name": "Gas Source 2",
-    "type": "gas_source",
-    "connected_bus": 2,
-    "min_w": 0.0,
-    "max_w": 1.26
-  },
-  {
-    "id": "GS3",
-    "name": "Gas Source 3",
-    "type": "gas_source",
-    "connected_bus": 5,
-    "min_w": 0.0,
-    "max_w": 0.72
-  },
-  {
-    "id": "GS4",
-    "name": "Gas Source 4",
-    "type": "gas_source",
-    "connected_bus": 8,
-    "min_w": 1.0,
-    "max_w": 2.3018
-  },
-  {
-    "id": "GS5",
-    "name": "Gas Source 5",
-    "type": "gas_source",
-    "connected_bus": 13,
-    "min_w": 0.0,
-    "max_w": 0.27
-  },
-  {
-    "id": "GS6",
-    "name": "Gas Source 6",
-    "type": "gas_source",
-    "connected_bus": 14,
-    "min_w": 0.0,
-    "max_w": 1.44
   }
 ]

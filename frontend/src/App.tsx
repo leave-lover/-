@@ -10,7 +10,6 @@ const App: React.FC = () => {
   const handleDataImported = () => {
     // 增加refreshTrigger的值来触发拓扑图组件重新获取数据
     setRefreshTrigger((prev) => prev + 1);
-    console.log("数据导入成功，拓扑图将自动刷新");
   };
 
   return (

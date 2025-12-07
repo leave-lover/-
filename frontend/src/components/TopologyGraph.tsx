@@ -1,10 +1,14 @@
-import React, { useState, useEffect, useCallback } from "react";
-import ForceGraph2D from "react-force-graph-2d";
+import React, { useState, useEffect, useCallback, useRef } from "react";
+import CustomForceGraph2D, {
+  CustomForceGraph2DRef,
+} from "./CustomForceGraph2D";
+import TopologyErrorHandler from "./TopologyErrorHandler";
 import "./TopologyGraph.css";
+import "./TopologyErrorHandler.css";
+import { GraphNode as Node, GraphLink as Link } from "../types/graphTypes";
 
-// 定义节点和链接类型
-interface Node {
-  id: string;
+// 扩展节点和链接类型以满足特定需求
+interface ExtendedNode extends Node {
   name: string;
   type: string;
   group: string;
@@ -12,17 +16,12 @@ interface Node {
   va?: number;
   pd?: number;
   qd?: number;
-  [key: string]: any;
 }
 
-interface Link {
-  source: string;
-  target: string;
-  type: string;
+interface ExtendedLink extends Link {
   r?: number;
   x?: number;
   value?: number;
-  [key: string]: any;
 }
 
 interface TopologyGraphProps {
@@ -32,13 +31,25 @@ interface TopologyGraphProps {
 const TopologyGraph: React.FC<TopologyGraphProps> = ({
   refreshTrigger = 0,
 }) => {
-  const [graphData, setGraphData] = useState<{ nodes: Node[]; links: Link[] }>({
+  const [graphData, setGraphData] = useState<{
+    nodes: ExtendedNode[];
+    links: ExtendedLink[];
+  }>({
     nodes: [],
     links: [],
   });
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [localRefreshTrigger, setRefreshTrigger] = useState(0); // 用于触发数据刷新的状态
+  // 用于触发数据刷新的状态（暂时注释掉未使用的状态）
+  // const [localRefreshTrigger, setLocalRefreshTrigger] = useState(0);
+
+  // 添加对CustomForceGraph2D的引用
+  const graphRef = useRef<CustomForceGraph2DRef>(null);
+
+  // 系统显示模式状态: 'both', 'electric', 'gas'
+  const [displayMode, setDisplayMode] = useState<"both" | "electric" | "gas">(
+    "both"
+  );
 
   // 封装获取数据的函数，便于重用
   const fetchGraphData = useCallback(async () => {
@@ -55,7 +66,7 @@ const TopologyGraph: React.FC<TopologyGraphProps> = ({
       const data = await response.json();
 
       // 根据节点类型确定group属性
-      const nodesWithGroups = data.nodes.map((node: Node) => {
+      const nodesWithGroups = data.nodes.map((node: ExtendedNode) => {
         let group = "other";
         if (node.type === "electric_bus") {
           group = "bus";
@@ -73,8 +84,7 @@ const TopologyGraph: React.FC<TopologyGraphProps> = ({
       });
       setIsLoading(false);
     } catch (err) {
-      console.error("Failed to fetch graph data:", err);
-      setError("Failed to load graph data from backend");
+      setError("获取图数据失败，请稍后重试。");
       setIsLoading(false);
     }
   }, []);
@@ -82,7 +92,7 @@ const TopologyGraph: React.FC<TopologyGraphProps> = ({
   // 从后端API获取数据
   useEffect(() => {
     fetchGraphData();
-  }, [fetchGraphData, refreshTrigger, localRefreshTrigger]);
+  }, [fetchGraphData, refreshTrigger]);
 
   // 获取节点颜色
   const getNodeColor = (group: string) => {
@@ -109,13 +119,103 @@ const TopologyGraph: React.FC<TopologyGraphProps> = ({
         return "#32cd32"; // 发电机连接 - 绿色
       case "gas_pipe":
         return "#ffa500"; // 天然气管道 - 橙色
+      case "gas_source_connection":
+        return "#ff6347"; // 气源连接 - 红色
+      case "coupling":
+        return "#800080"; // 耦合连接 - 紫色
       default:
         return "#999"; // 默认灰色
     }
   };
 
-  // 获取节点大小
-  const getNodeSize = (node: Node) => {
+  // 判断节点是否应该显示
+  const isNodeVisible = (node: ExtendedNode) => {
+    if (displayMode === "both") return true;
+    if (displayMode === "electric")
+      return ["bus", "generator"].includes(node.group || "");
+    if (displayMode === "gas")
+      return ["gas", "source"].includes(node.group || "");
+    return true;
+  };
+
+  // 判断连线是否应该显示
+  const isLinkVisible = (link: ExtendedLink) => {
+    // 查找连线两端的节点
+    const sourceNode = graphData.nodes.find(
+      (n) =>
+        n.id ===
+        (typeof link.source === "string" ? link.source : link.source.id)
+    );
+    const targetNode = graphData.nodes.find(
+      (n) =>
+        n.id ===
+        (typeof link.target === "string" ? link.target : link.target.id)
+    );
+
+    // 如果找不到节点，则隐藏连线
+    if (!sourceNode || !targetNode) return false;
+
+    // 在单一系统显示模式下，仍显示耦合连接线
+    if (link.type === "coupling") return true;
+
+    // 根据显示模式判断是否显示连线
+    if (displayMode === "both") return true;
+
+    if (displayMode === "electric") {
+      return (
+        ["bus", "generator"].includes(sourceNode.group) &&
+        ["bus", "generator"].includes(targetNode.group)
+      );
+    }
+
+    if (displayMode === "gas") {
+      return (
+        ["gas", "source"].includes(sourceNode.group) &&
+        ["gas", "source"].includes(targetNode.group)
+      );
+    }
+
+    return true;
+  };
+
+  // 获取连线宽度（增强耦合连接的视觉效果）
+  const getLinkWidth = (link: ExtendedLink) => {
+    // 耦合连接使用更宽的线条以增强可见性
+    if (link.type === "coupling") {
+      return 4; // 耦合连接使用4像素宽度
+    }
+    return 2; // 其他连接使用默认宽度
+  };
+
+  // 获取节点大小（增强耦合节点的视觉效果）
+  const getNodeSize = (node: ExtendedNode) => {
+    // 检查该节点是否参与耦合连接
+    const isCouplingNode = graphData.links.some(
+      (link) =>
+        link.type === "coupling" &&
+        (link.source === node.id ||
+          (typeof link.source !== "string" && link.source.id === node.id) ||
+          link.target === node.id ||
+          (typeof link.target !== "string" && link.target.id === node.id))
+    );
+
+    // 耦合节点使用更大的尺寸
+    if (isCouplingNode) {
+      switch (node.group) {
+        case "bus":
+          return 16; // 电力母线（耦合节点）
+        case "generator":
+          return 20; // 发电机（耦合节点）
+        case "gas":
+          return 18; // 天然气节点（耦合节点）
+        case "source":
+          return 22; // 天然气源（耦合节点）
+        default:
+          return 14; // 默认大小（耦合节点）
+      }
+    }
+
+    // 非耦合节点使用原有尺寸
     switch (node.group) {
       case "bus":
         return 12; // 电力母线
@@ -142,104 +242,176 @@ const TopologyGraph: React.FC<TopologyGraphProps> = ({
     return <div className="topology-graph-error">Error: {error}</div>;
   }
 
-  return (
-    <div className="topology-graph">
-      <h2>能源网络拓扑图</h2>
+  // 计算电力节点和天然气节点的数量（不包括发电机和气源）
+  const countNodes = () => {
+    const electricNodes = graphData.nodes.filter((node) =>
+      ["bus"].includes(node.group || "")
+    ).length;
 
-      {/* 网络统计信息 */}
-      <div className="network-stats">
-        <div className="stat-card">
-          <h3>电力节点</h3>
-          <p>{graphData.nodes.filter((n) => n.group === "bus").length}</p>
-        </div>
-        <div className="stat-card">
-          <h3>发电机</h3>
-          <p>{graphData.nodes.filter((n) => n.group === "generator").length}</p>
-        </div>
-        <div className="stat-card">
-          <h3>天然气节点</h3>
-          <p>
-            {
-              graphData.nodes.filter(
-                (n) => n.group === "gas" || n.group === "source"
-              ).length
-            }
-          </p>
-        </div>
-        <div className="stat-card">
-          <h3>连接数</h3>
-          <p>{graphData.links.length}</p>
-        </div>
-      </div>
+    const gasNodes = graphData.nodes.filter((node) =>
+      ["gas"].includes(node.group || "")
+    ).length;
 
-      {/* 力导向图 */}
+    return { electricNodes, gasNodes };
+  };
+
+  // 渲染图表视图
+  const renderGraphView = () => {
+    const { electricNodes, gasNodes } = countNodes();
+
+    return (
       <div className="graph-container">
-        <ForceGraph2D
+        <div className="node-count-info">
+          <span className="node-count-item">
+            电力节点: <strong>{electricNodes}</strong>
+          </span>
+          <span className="node-count-item">
+            天然气节点: <strong>{gasNodes}</strong>
+          </span>
+        </div>
+        <CustomForceGraph2D
+          ref={graphRef}
           graphData={graphData}
-          nodeLabel={(node: Node) => `${node.name} (${node.id})`}
-          nodeColor={(node: Node) => getNodeColor(node.group)}
-          nodeVal={(node: Node) => getNodeSize(node)}
-          linkColor={(link: Link) => getLinkColor(link.type)}
-          linkWidth={2}
+          nodeLabel={(node) => `${node.name} (${node.id})`}
+          nodeColor={(node) => getNodeColor(node.group || "")}
+          nodeVal={(node) => getNodeSize(node as ExtendedNode)}
+          nodeVisibility={(node) => isNodeVisible(node as ExtendedNode)}
+          linkColor={(link) => getLinkColor(link.type)}
+          linkWidth={(link) => getLinkWidth(link as ExtendedLink)}
+          linkVisibility={(link) => isLinkVisible(link as ExtendedLink)}
           backgroundColor="#ffffff"
-          onNodeClick={(node) => console.log("Node clicked:", node)}
-          onLinkClick={(link) => console.log("Link clicked:", link)}
+          onNodeClick={(node) => {}}
+          onLinkClick={(link) => {}}
         />
       </div>
+    );
+  };
 
-      {/* 图例 */}
-      <div className="legend">
-        <h3>图例</h3>
-        <div className="legend-group">
-          <div className="legend-item">
-            <div
-              className="legend-color"
-              style={{ backgroundColor: "#4682b4" }}
-            ></div>
-            <span>电力母线</span>
-          </div>
-          <div className="legend-item">
-            <div
-              className="legend-color"
-              style={{ backgroundColor: "#32cd32" }}
-            ></div>
-            <span>发电机</span>
-          </div>
+  return (
+    <TopologyErrorHandler>
+      <div className="topology-graph">
+        <h2>能源网络拓扑图</h2>
+
+        {/* 系统切换按钮 */}
+        <div className="system-toggle-buttons">
+          <button
+            className={`toggle-button ${
+              displayMode === "electric" ? "active" : ""
+            }`}
+            onClick={() => setDisplayMode("electric")}
+          >
+            仅电力系统
+          </button>
+          <button
+            className={`toggle-button ${displayMode === "gas" ? "active" : ""}`}
+            onClick={() => setDisplayMode("gas")}
+          >
+            仅天然气系统
+          </button>
+          <button
+            className={`toggle-button ${
+              displayMode === "both" ? "active" : ""
+            }`}
+            onClick={() => setDisplayMode("both")}
+          >
+            全部显示
+          </button>
+          <button
+            className="toggle-button reset-view-button"
+            onClick={() => graphRef.current?.resetView()}
+          >
+            复位视图
+          </button>
         </div>
-        <div className="legend-group">
-          <div className="legend-item">
-            <div
-              className="legend-color"
-              style={{ backgroundColor: "#ffa500" }}
-            ></div>
-            <span>天然气节点</span>
-          </div>
-          <div className="legend-item">
-            <div
-              className="legend-color"
-              style={{ backgroundColor: "#ff6347" }}
-            ></div>
-            <span>天然气源</span>
-          </div>
-        </div>
-        <div className="legend-group">
-          <div className="legend-item">
-            <div
-              className="legend-line"
-              style={{ backgroundColor: "#4682b4" }}
-            ></div>
-            <span>电力线路</span>
-          </div>
-          <div className="legend-item">
-            <div
-              className="legend-line"
-              style={{ backgroundColor: "#ffa500" }}
-            ></div>
-            <span>天然气管道</span>
+
+        {/* 主容器 - 包含图表和图例 */}
+        <div className="topology-main-container">
+          {/* 图表视图 */}
+          {renderGraphView()}
+
+          {/* 图例 */}
+          <div className="legend-container">
+            <div className="legend">
+              <h3>图例</h3>
+              <div className="legend-section">
+                <h4>节点类型</h4>
+                <div className="legend-group">
+                  <div className="legend-item">
+                    <div
+                      className="legend-color"
+                      style={{ backgroundColor: "#4682b4" }}
+                    ></div>
+                    <span>电力母线</span>
+                  </div>
+                  <div className="legend-item">
+                    <div
+                      className="legend-color"
+                      style={{ backgroundColor: "#32cd32" }}
+                    ></div>
+                    <span>发电机</span>
+                  </div>
+                  <div className="legend-item">
+                    <div
+                      className="legend-color"
+                      style={{ backgroundColor: "#ffa500" }}
+                    ></div>
+                    <span>天然气节点</span>
+                  </div>
+                  <div className="legend-item">
+                    <div
+                      className="legend-color"
+                      style={{ backgroundColor: "#ff6347" }}
+                    ></div>
+                    <span>天然气源</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="legend-section">
+                <h4>连接类型</h4>
+                <div className="legend-group">
+                  <div className="legend-item">
+                    <div
+                      className="legend-line"
+                      style={{ backgroundColor: "#4682b4" }}
+                    ></div>
+                    <span>电力线路</span>
+                  </div>
+                  <div className="legend-item">
+                    <div
+                      className="legend-line"
+                      style={{ backgroundColor: "#32cd32" }}
+                    ></div>
+                    <span>发电机连接</span>
+                  </div>
+                  <div className="legend-item">
+                    <div
+                      className="legend-line"
+                      style={{ backgroundColor: "#ffa500" }}
+                    ></div>
+                    <span>天然气管道</span>
+                  </div>
+                  <div className="legend-item">
+                    <div
+                      className="legend-line"
+                      style={{ backgroundColor: "#ff6347" }}
+                    ></div>
+                    <span>气源连接</span>
+                  </div>
+                  <div className="legend-item">
+                    <div
+                      className="legend-line coupling-legend"
+                      style={{ backgroundColor: "#800080", height: "4px" }}
+                    ></div>
+                    <span>耦合连接（跨系统关键连接）</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </TopologyErrorHandler>
   );
 };
 

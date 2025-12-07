@@ -496,42 +496,6 @@
     "capacity": 0.03
   },
   {
-    "source": "GS1",
-    "target": "GAS1",
-    "type": "gas_source_connection",
-    "value": 1.7391
-  },
-  {
-    "source": "GS2",
-    "target": "GAS2",
-    "type": "gas_source_connection",
-    "value": 1.26
-  },
-  {
-    "source": "GS3",
-    "target": "GAS5",
-    "type": "gas_source_connection",
-    "value": 0.72
-  },
-  {
-    "source": "GS4",
-    "target": "GAS8",
-    "type": "gas_source_connection",
-    "value": 2.3018
-  },
-  {
-    "source": "GS5",
-    "target": "GAS13",
-    "type": "gas_source_connection",
-    "value": 0.27
-  },
-  {
-    "source": "GS6",
-    "target": "GAS14",
-    "type": "gas_source_connection",
-    "value": 1.44
-  },
-  {
     "source": "GAS3",
     "target": "E30",
     "type": "coupling",

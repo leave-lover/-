@@ -5,6 +5,15 @@ import os
 from werkzeug.utils import secure_filename
 import sys
 import traceback
+import logging
+
+# 配置日志
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+
+logger = logging.getLogger(__name__)
 
 # 添加当前目录到Python路径，以便导入data_processor
 sys.path.append(os.path.dirname(__file__))
@@ -143,7 +152,7 @@ def import_data():
         raw_data = parse_matpower_data(upload_path)
         electric_graph = build_electric_network_graph(raw_data)
         gas_graph = build_gas_network_graph(raw_data)
-        combined_graph = combine_networks(electric_graph, gas_graph)
+        combined_graph = combine_networks(electric_graph, gas_graph, raw_data)
         
         # 保存处理后的数据，覆盖现有数据
         save_processed_data(combined_graph, STATIC_FOLDER)
@@ -157,8 +166,8 @@ def import_data():
     except Exception as e:
         # 记录详细的错误信息
         error_details = traceback.format_exc()
-        print(f"数据导入错误: {str(e)}")
-        print(error_details)
+        logger.error(f"数据导入错误: {str(e)}")
+        logger.error(error_details)
         return jsonify({"error": f"数据导入失败: {str(e)}"}), 500
 
 if __name__ == '__main__':
