@@ -3,6 +3,7 @@ import CustomForceGraph2D, {
   CustomForceGraph2DRef,
 } from "./CustomForceGraph2D";
 import TopologyErrorHandler from "./TopologyErrorHandler";
+import { DEFAULT_FLOW_CONFIG, getParticleColorByLinkType } from "./FlowConfig";
 import "./TopologyGraph.css";
 import "./TopologyErrorHandler.css";
 import { GraphNode as Node, GraphLink as Link } from "../types/graphTypes";
@@ -49,6 +50,11 @@ const TopologyGraph: React.FC<TopologyGraphProps> = ({
   // 系统显示模式状态: 'both', 'electric', 'gas'
   const [displayMode, setDisplayMode] = useState<"both" | "electric" | "gas">(
     "both"
+  );
+
+  // 粒子流动效果开关状态
+  const [flowEnabled, setFlowEnabled] = useState<boolean>(
+    DEFAULT_FLOW_CONFIG.enableFlow
   );
 
   // 封装获取数据的函数，便于重用
@@ -279,6 +285,15 @@ const TopologyGraph: React.FC<TopologyGraphProps> = ({
           linkColor={(link) => getLinkColor(link.type)}
           linkWidth={(link) => getLinkWidth(link as ExtendedLink)}
           linkVisibility={(link) => isLinkVisible(link as ExtendedLink)}
+          // 粒子流动效果配置
+          linkDirectionalParticles={
+            flowEnabled ? DEFAULT_FLOW_CONFIG.particleCount : 0
+          }
+          linkDirectionalParticleSpeed={DEFAULT_FLOW_CONFIG.particleSpeed}
+          linkDirectionalParticleWidth={DEFAULT_FLOW_CONFIG.particleWidth}
+          linkDirectionalParticleColor={(link) =>
+            getParticleColorByLinkType(link.type)
+          }
           backgroundColor="#ffffff"
           onNodeClick={(node) => {}}
           onLinkClick={(link) => {}}
@@ -315,6 +330,12 @@ const TopologyGraph: React.FC<TopologyGraphProps> = ({
             onClick={() => setDisplayMode("both")}
           >
             全部显示
+          </button>
+          <button
+            className={`toggle-button ${flowEnabled ? "active" : ""}`}
+            onClick={() => setFlowEnabled(!flowEnabled)}
+          >
+            {flowEnabled ? "关闭潮流" : "开启潮流"}
           </button>
           <button
             className="toggle-button reset-view-button"
@@ -404,6 +425,63 @@ const TopologyGraph: React.FC<TopologyGraphProps> = ({
                       style={{ backgroundColor: "#800080", height: "4px" }}
                     ></div>
                     <span>耦合连接（跨系统关键连接）</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="legend-section">
+                <h4>潮流可视化</h4>
+                <div className="legend-group">
+                  <div className="legend-item">
+                    <div
+                      className="legend-flow"
+                      style={{
+                        background:
+                          "linear-gradient(to right, #ff5722, #ff5722)",
+                        width: "30px",
+                        height: "4px",
+                        position: "relative",
+                        overflow: "hidden",
+                      }}
+                    >
+                      <div
+                        style={{
+                          position: "absolute",
+                          width: "6px",
+                          height: "4px",
+                          backgroundColor: "#fff",
+                          borderRadius: "50%",
+                          top: "0",
+                          left: "10px",
+                          boxShadow: "0 0 2px 1px rgba(255, 255, 255, 0.8)",
+                        }}
+                      ></div>
+                    </div>
+                    <span>潮流方向指示</span>
+                  </div>
+                  <div className="legend-item">
+                    <div
+                      className="legend-flow"
+                      style={{
+                        background:
+                          "linear-gradient(to right, #4682b4, #4682b4)",
+                        width: "30px",
+                        height: "4px",
+                      }}
+                    ></div>
+                    <span>电力线路潮流</span>
+                  </div>
+                  <div className="legend-item">
+                    <div
+                      className="legend-flow"
+                      style={{
+                        background:
+                          "linear-gradient(to right, #ffa500, #ffa500)",
+                        width: "30px",
+                        height: "4px",
+                      }}
+                    ></div>
+                    <span>天然气管道潮流</span>
                   </div>
                 </div>
               </div>

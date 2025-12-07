@@ -24,6 +24,11 @@ interface CustomForceGraph2DProps {
   linkColor?: (link: Link) => string;
   linkWidth?: number | ((link: Link) => number);
   linkVisibility?: (link: Link) => boolean;
+  // 粒子流动效果相关属性
+  linkDirectionalParticles?: number | ((link: Link) => number);
+  linkDirectionalParticleSpeed?: number | ((link: Link) => number);
+  linkDirectionalParticleWidth?: number | ((link: Link) => number);
+  linkDirectionalParticleColor?: string | ((link: Link) => string);
   backgroundColor?: string;
   onNodeClick?: (node: Node) => void;
   onLinkClick?: (link: Link) => void;
@@ -50,6 +55,11 @@ const CustomForceGraph2D = forwardRef<
       linkColor,
       linkWidth,
       linkVisibility,
+      // 粒子流动效果相关属性
+      linkDirectionalParticles,
+      linkDirectionalParticleSpeed,
+      linkDirectionalParticleWidth,
+      linkDirectionalParticleColor,
       backgroundColor,
       onNodeClick,
       onLinkClick,
@@ -303,6 +313,11 @@ const CustomForceGraph2D = forwardRef<
           linkColor={getLinkColor}
           linkWidth={getLinkWidth}
           linkVisibility={linkVisibility}
+          // 粒子流动效果相关属性
+          linkDirectionalParticles={linkDirectionalParticles}
+          linkDirectionalParticleSpeed={linkDirectionalParticleSpeed}
+          linkDirectionalParticleWidth={linkDirectionalParticleWidth}
+          linkDirectionalParticleColor={linkDirectionalParticleColor}
           backgroundColor={backgroundColor}
           onNodeClick={handleNodeClick}
           onLinkClick={handleLinkClick}

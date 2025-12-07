@@ -173,6 +173,17 @@
   color: #555;
 }
 
+/* 潮流可视化图例样式 */
+.legend-flow {
+  position: relative;
+  width: 30px;
+  height: 4px;
+  margin-right: 8px;
+  border-radius: 2px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
 /* 加载和错误状态 */
 .topology-graph-loading,
 .topology-graph-error {
