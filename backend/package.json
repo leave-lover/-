@@ -1,0 +1,25 @@
+{
+  "name": "energy-defense-backend",
+  "version": "0.0.0",
+  "description": "Backend for energy defense and attack platform",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "energy",
+    "optimization",
+    "backend"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2",
+    "cors": "^2.8.5",
+    "python-shell": "^5.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}

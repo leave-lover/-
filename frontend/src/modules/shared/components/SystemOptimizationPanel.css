@@ -1,0 +1,793 @@
+.system-optimization-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+}
+
+/* 模式选择器 */
+.mode-selector {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: 8px;
+  padding: 15px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 15px var(--shadow-primary);
+}
+
+.mode-selector h3 {
+  margin-top: 0;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-primary);
+  padding-bottom: 8px;
+  text-shadow: 0 0 5px var(--shadow-primary);
+}
+
+.mode-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.mode-btn {
+  flex: 1;
+  min-width: 120px;
+  padding: 10px 15px;
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.mode-btn:hover {
+  background-color: var(--bg-secondary);
+  box-shadow: 0 0 10px var(--shadow-primary);
+}
+
+.mode-btn.active {
+  background-color: var(--highlight);
+  color: var(--text-primary);
+  border-color: var(--text-primary);
+  box-shadow: 0 0 15px var(--shadow-primary);
+}
+
+.optimization-section {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: 6px;
+  padding: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 10px var(--shadow-primary);
+}
+
+.optimization-section h3 {
+  margin-top: 0;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-primary);
+  padding-bottom: 6px;
+  font-size: 1.1rem;
+  text-shadow: 0 0 5px var(--shadow-primary);
+}
+
+.section-description {
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  margin-top: 4px;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
+/* 设置列表样式 */
+.settings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.setting-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 10px;
+  background-color: var(--bg-tertiary);
+  border-radius: 4px;
+  border: 1px solid var(--border-secondary);
+  transition: all 0.3s;
+}
+
+.setting-item:hover {
+  box-shadow: 0 0 15px var(--shadow-primary);
+}
+
+.setting-info h4 {
+  margin: 0 0 3px 0;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+}
+
+.setting-info p {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+.setting-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.impact-badge {
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.impact-high {
+  background-color: rgba(var(--metric-error-rgb), 0.2);
+  color: var(--metric-error);
+  border: 1px solid rgba(var(--metric-error-rgb), 0.3);
+}
+
+.impact-medium {
+  background-color: rgba(var(--metric-warning-rgb), 0.2);
+  color: var(--metric-warning);
+  border: 1px solid rgba(var(--metric-warning-rgb), 0.3);
+}
+
+.impact-low {
+  background-color: rgba(var(--metric-success-rgb), 0.2);
+  color: var(--metric-success);
+  border: 1px solid rgba(var(--metric-success-rgb), 0.3);
+}
+
+/* 打勾样式复选框 */
+.checkbox-container {
+  display: inline-block;
+  position: relative;
+  width: 22px;
+  height: 22px;
+}
+
+.checkbox-container input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 22px;
+  width: 22px;
+  background-color: var(--bg-tertiary);
+  border: 2px solid var(--border-primary);
+  border-radius: 4px;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 5px var(--shadow-primary);
+}
+
+.checkbox-container:hover input ~ .checkmark {
+  background-color: var(--bg-secondary);
+  box-shadow: 0 0 10px var(--shadow-primary);
+}
+
+.checkbox-container input:checked ~ .checkmark {
+  background-color: var(--highlight);
+  border-color: var(--text-primary);
+  box-shadow: 0 0 10px var(--shadow-primary);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkbox-container .checkmark:after {
+  content: "✓";
+  color: var(--text-primary);
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* 分析按钮 */
+.analyze-button {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--highlight);
+  color: var(--text-primary);
+  border: 1px solid var(--text-primary);
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s;
+  box-shadow: 0 0 10px var(--shadow-primary);
+}
+
+.analyze-button:hover:not(:disabled) {
+  background-color: var(--highlight);
+  box-shadow: 0 0 15px var(--shadow-primary);
+}
+
+.analyze-button:disabled {
+  background-color: var(--bg-tertiary);
+  color: rgba(var(--text-primary-rgb), 0.5);
+  border-color: var(--border-primary);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.analyze-button.analyzing {
+  background-color: var(--bg-tertiary);
+  color: rgba(var(--text-primary-rgb), 0.5);
+  border-color: var(--border-primary);
+  box-shadow: none;
+}
+
+.spinner {
+  border: 2px solid var(--border-primary);
+  border-top: 2px solid var(--text-primary);
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* 分析结果 */
+.analysis-result {
+  margin-top: 15px;
+  padding: 15px;
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-primary);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  backdrop-filter: blur(5px);
+}
+
+.result-icon {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  text-shadow: 0 0 10px var(--shadow-primary);
+}
+
+.analysis-result p {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  text-shadow: 0 0 5px var(--shadow-primary);
+}
+
+.optimization-result-text {
+  margin: 0;
+  color: var(--metric-success);
+  font-size: 1rem;
+  font-weight: 600;
+  text-shadow: 0 0 5px var(--shadow-primary);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* 返回按钮样式 */
+.back-button {
+  margin-top: 15px;
+  padding: 8px 16px;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.back-button:hover {
+  background-color: var(--bg-tertiary);
+  box-shadow: 0 0 10px var(--shadow-primary);
+}
+
+/* 优化类型提示样式 */
+.optimization-type-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+  background-color: var(--bg-tertiary);
+  border-radius: 6px;
+  border: 1px solid var(--border-secondary);
+}
+
+.optimization-type-info > p {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+}
+
+.optimization-type-indicator {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 8px;
+  box-shadow: 0 0 5px currentColor;
+  vertical-align: middle;
+}
+
+.optimization-type-text {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+}
+
+.coupled-optimization-note {
+  background-color: rgba(255, 152, 0, 0.1);
+  border-left: 3px solid #ff9800;
+  padding: 8px 12px;
+  border-radius: 0 4px 4px 0;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  margin: 5px 0 0 0;
+  opacity: 0.9;
+}
+
+.independent-optimization-note {
+  background-color: rgba(76, 175, 80, 0.1);
+  border-left: 3px solid #4caf50;
+  padding: 8px 12px;
+  border-radius: 0 4px 4px 0;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  margin: 5px 0 0 0;
+  opacity: 0.9;
+}
+
+/* 系统选择样式 */
+.system-selection-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.system-selection-item {
+  background-color: var(--bg-tertiary);
+  border-radius: 6px;
+  border: 1px solid var(--border-secondary);
+  transition: all 0.3s;
+  overflow: hidden;
+}
+
+.system-selection-item:hover {
+  box-shadow: 0 0 15px var(--shadow-primary);
+}
+
+.system-selection-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.system-info h4 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.system-description {
+  margin: 4px 0 0 0;
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.system-control {
+  display: flex;
+  align-items: center;
+}
+
+.system-checkbox-container {
+  display: inline-block;
+  position: relative;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+}
+
+.system-checkbox-container input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.system-checkbox-container .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 26px;
+  width: 26px;
+  background-color: var(--bg-tertiary);
+  border: 2px solid var(--border-primary);
+  border-radius: 4px;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 5px var(--shadow-primary);
+}
+
+.system-checkbox-container:hover input ~ .checkmark {
+  background-color: var(--bg-secondary);
+  box-shadow: 0 0 10px var(--shadow-primary);
+}
+
+.system-checkbox-container input:checked ~ .checkmark {
+  background-color: var(--highlight);
+  border-color: var(--text-primary);
+  box-shadow: 0 0 10px var(--shadow-primary);
+}
+
+.system-checkbox-container .checkmark:after {
+  content: "✓";
+  color: var(--text-primary);
+  font-size: 20px;
+  font-weight: bold;
+  display: none;
+}
+
+.system-checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* 约束详情样式 */
+.constraint-details {
+  padding: 12px 15px;
+  background-color: var(--bg-tertiary);
+  border-top: 1px solid var(--border-primary);
+}
+
+.constraint-detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px dotted var(--border-secondary);
+}
+
+.constraint-detail-item:last-child {
+  border-bottom: none;
+}
+
+.constraint-icon {
+  font-size: 1rem;
+  color: var(--text-primary);
+  margin-top: 2px;
+  opacity: 0.8;
+}
+
+.constraint-detail-info {
+  flex: 1;
+}
+
+.constraint-detail-info h5 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.constraint-detail-info p {
+  margin: 4px 0 0 0;
+  color: var(--text-primary);
+  font-size: 0.8rem;
+  opacity: 0.7;
+  line-height: 1.4;
+}
+
+/* 简化样式 */
+.system-optimization-panel.simplified {
+  gap: 10px;
+  padding: 8px;
+}
+
+.optimization-section.compact {
+  padding: 8px 10px;
+  margin-bottom: 5px;
+}
+
+.optimization-section.compact h3 {
+  font-size: 0.9rem;
+  padding-bottom: 4px;
+  margin-bottom: 8px;
+}
+
+.optimization-type-info.simplified {
+  gap: 5px;
+  padding: 8px;
+}
+
+.optimization-type-text {
+  font-size: 0.85rem;
+}
+
+.system-selection-list.simplified {
+  gap: 8px;
+}
+
+.system-selection-item.simplified {
+  border-radius: 4px;
+}
+
+.system-selection-header.simplified {
+  padding: 8px 12px;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.system-selection-header.simplified h4 {
+  margin: 0;
+  font-size: 0.9rem;
+  flex: 1;
+}
+
+.constraints-summary {
+  margin-top: 10px;
+  padding: 8px;
+  background-color: var(--bg-tertiary);
+  border-radius: 4px;
+  border: 1px solid var(--border-secondary);
+}
+
+.constraints-details-toggle {
+  cursor: pointer;
+  padding: 5px 0;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+}
+
+.constraints-details-toggle summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  user-select: none;
+}
+
+.constraints-details-toggle summary::-webkit-details-marker {
+  display: none;
+}
+
+.constraints-details-toggle summary:before {
+  content: "▼";
+  font-size: 0.7rem;
+  transition: transform 0.2s;
+}
+
+.constraints-details-toggle[open] summary:before {
+  transform: rotate(180deg);
+}
+
+.constraints-summary-content {
+  margin-top: 8px;
+  padding: 8px 12px;
+  background-color: var(--bg-secondary);
+  border-radius: 4px;
+  border: 1px solid var(--border-primary);
+}
+
+.constraints-summary-content h5 {
+  margin: 0 0 5px 0;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+}
+
+.constraints-summary-content ul {
+  margin: 5px 0 10px 0;
+  padding-left: 20px;
+}
+
+.constraints-summary-content li {
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  opacity: 0.9;
+  line-height: 1.3;
+}
+
+.analysis-result.compact {
+  margin-top: 10px;
+  padding: 10px;
+  gap: 8px;
+}
+
+.analysis-result.compact p {
+  font-size: 0.85rem;
+}
+
+.iterations-list.simplified {
+  gap: 8px;
+}
+
+.iteration-item.simplified {
+  padding: 8px 12px;
+}
+
+.iteration-header.simplified {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.iteration-header.simplified h4 {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.iteration-metrics.simplified {
+  gap: 10px;
+  font-size: 0.85rem;
+}
+
+.section-description {
+  display: none;
+}
+
+/* 约束列表样式 */
+.constraints-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.constraint-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 10px;
+  background-color: var(--bg-tertiary);
+  border-radius: 4px;
+  border: 1px solid var(--border-secondary);
+  transition: all 0.3s;
+}
+
+.constraint-item:hover {
+  box-shadow: 0 0 15px var(--shadow-primary);
+}
+
+.constraint-info h4 {
+  margin: 0 0 3px 0;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+}
+
+.constraint-info p {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+.constraint-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 迭代结果样式 */
+.iterations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.iteration-item {
+  background-color: var(--bg-tertiary);
+  border-radius: 6px;
+  border: 1px solid var(--border-secondary);
+  padding: 10px;
+  transition: all 0.3s;
+}
+
+.iteration-item:hover {
+  box-shadow: 0 0 15px var(--shadow-primary);
+}
+
+.iteration-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.iteration-header h4 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+.iteration-metrics {
+  display: flex;
+  gap: 15px;
+  font-size: 0.85rem;
+}
+
+.metric {
+  color: var(--text-primary);
+  opacity: 0.9;
+}
+
+.iteration-progress {
+  width: 100%;
+  height: 8px;
+  background-color: var(--bg-secondary);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: var(--highlight);
+  border-radius: 4px;
+  transition: width 0.5s ease-in-out;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .setting-item,
+  .constraint-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .setting-controls,
+  .constraint-control {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .iteration-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .iteration-metrics {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

@@ -1,0 +1,218 @@
+.defense-simulation-results-content {
+  padding: 16px;
+  background-color: var(--bg-secondary);
+  height: 100%;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* 空页面样式 */
+.empty-defense-results {
+  background-color: var(--bg-tertiary);
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 8px var(--shadow-primary);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-primary);
+}
+
+.empty-defense-results h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+  font-size: 18px;
+  text-align: center;
+}
+
+.empty-content-placeholder {
+  flex: 1;
+  background-color: var(--bg-secondary);
+  border: 2px dashed var(--border-primary);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  font-style: italic;
+  position: relative;
+}
+
+.empty-content-placeholder::before {
+  content: "在此填充防御模拟结果内容";
+  text-align: center;
+  font-size: 14px;
+}
+
+/* 防御结果部分样式 */
+.defense-results-header {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.defense-results-header h3 {
+  margin: 0;
+  font-size: 18px;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* 显眼的关闭防御按钮样式 */
+.close-defense-button.prominent {
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  background-color: #ff4444;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.close-defense-button.prominent:hover {
+  background-color: #ff3333;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.close-defense-button.prominent:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.defense-results-section {
+  margin-bottom: 24px;
+  padding: 16px;
+  background-color: var(--bg-tertiary);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px var(--shadow-primary);
+  border: 1px solid var(--border-primary);
+}
+
+.defense-results-section h4 {
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  color: var(--text-primary);
+  font-weight: 600;
+  border-bottom: 1px solid var(--border-primary);
+  padding-bottom: 8px;
+}
+
+/* 结果网格布局 */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+/* 结果项样式 */
+.result-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.result-label {
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.result-value {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  background-color: var(--bg-secondary);
+  padding: 8px 12px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px var(--shadow-primary);
+  border: 1px solid var(--border-primary);
+}
+
+/* 保护高亮样式 */
+.protection-highlight {
+  margin-top: 16px;
+  padding: 12px;
+  background-color: rgba(76, 175, 80, 0.1);
+  color: #4caf50;
+  border-radius: 4px;
+  font-weight: 600;
+  text-align: center;
+  border-left: 4px solid #4caf50;
+  box-shadow: 0 1px 3px var(--shadow-primary);
+}
+
+/* 防御操作部分样式 */
+.defense-actions-section {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+  background-color: var(--bg-tertiary);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px var(--shadow-primary);
+  border: 1px solid var(--border-primary);
+}
+
+/* 关闭防御按钮样式 */
+.close-defense-button {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px var(--shadow-primary);
+}
+
+.close-defense-button:hover {
+  background-color: var(--bg-primary);
+  border-color: var(--accent-color);
+  box-shadow: 0 4px 8px var(--shadow-primary);
+  transform: translateY(-2px);
+}
+
+.close-defense-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px var(--shadow-primary);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .defense-simulation-results-content {
+    padding: 8px;
+  }
+
+  .empty-defense-results {
+    padding: 12px;
+  }
+
+  .empty-defense-results h3 {
+    font-size: 16px;
+  }
+
+  .results-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .result-value {
+    font-size: 16px;
+    padding: 6px 10px;
+  }
+
+  .defense-results-section {
+    padding: 12px;
+  }
+}

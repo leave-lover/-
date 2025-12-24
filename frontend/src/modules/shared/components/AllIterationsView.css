@@ -1,0 +1,209 @@
+.all-iterations-view {
+  padding: 20px;
+  background-color: var(--bg-secondary);
+  border-radius: 8px;
+  border: 1px solid var(--border-primary);
+  margin-bottom: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 15px var(--shadow-primary);
+}
+
+.section-header {
+  margin: 0 0 20px 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-primary);
+}
+
+/* 可折叠头部样式 */
+.collapsible-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.collapsible-header:hover {
+  background-color: rgba(var(--highlight-rgb), 0.05);
+  border-radius: 4px;
+}
+
+/* 折叠按钮样式 */
+.collapse-toggle {
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 0.75rem;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 2px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.collapse-toggle:hover {
+  background-color: rgba(var(--highlight-rgb), 0.1);
+  transform: scale(1.1);
+}
+
+.collapse-toggle.collapsed {
+  transform: rotate(-90deg);
+}
+
+.all-iterations-view h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  text-shadow: 0 0 5px var(--shadow-primary);
+}
+
+.iterations-table-container {
+  overflow-x: auto;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.iterations-table-container,
+.iterations-summary {
+  transition: all 0.3s ease;
+  max-height: 2000px; /* 增大最大高度，确保所有内容都能显示 */
+  opacity: 1;
+  overflow: hidden;
+}
+
+/* 折叠状态的内容区域样式 */
+.iterations-table-container.collapsed,
+.iterations-summary.collapsed {
+  max-height: 0;
+  opacity: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.iterations-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--bg-tertiary);
+  border-radius: 4px;
+  border: 1px solid var(--border-primary);
+  backdrop-filter: blur(5px);
+}
+
+.iterations-table th,
+.iterations-table td {
+  padding: 12px 8px;
+  text-align: center;
+  border-bottom: 1px solid var(--border-secondary);
+}
+
+.iterations-table th {
+  background-color: rgba(0, 0, 0, 0.2);
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.85rem;
+}
+
+.iterations-table td {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+.iterations-table tr:last-child td {
+  border-bottom: none;
+}
+
+.iterations-table tr:hover {
+  background-color: var(--highlight);
+}
+
+.view-detail-btn {
+  background-color: var(--highlight);
+  color: var(--text-primary);
+  border: 1px solid var(--border-primary);
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 8px var(--shadow-primary);
+}
+
+.view-detail-btn:hover {
+  background-color: var(--highlight);
+  border-color: var(--text-primary);
+  box-shadow: 0 0 15px var(--shadow-primary);
+}
+
+.iterations-summary h4 {
+  margin: 0 0 15px 0;
+  font-size: 1rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  transition: all 0.3s ease;
+}
+
+.summary-card {
+  background-color: var(--bg-tertiary);
+  border-radius: 6px;
+  padding: 15px;
+  text-align: center;
+  border: 1px solid var(--border-primary);
+  backdrop-filter: blur(5px);
+}
+
+.summary-label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 5px;
+}
+
+.summary-value {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .all-iterations-view {
+    padding: 15px;
+  }
+
+  .iterations-table th,
+  .iterations-table td {
+    padding: 8px 4px;
+    font-size: 0.8rem;
+  }
+
+  .view-detail-btn {
+    padding: 4px 8px;
+    font-size: 0.8rem;
+  }
+
+  .summary-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .summary-card {
+    padding: 10px;
+  }
+
+  .summary-label {
+    font-size: 0.8rem;
+  }
+
+  .summary-value {
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,167 @@
+/* CSS变量定义 - 能源防御与攻击平台 */
+
+/* 主题色 */
+:root {
+  /* 主色调 */
+  --primary-color: #007acc;
+  --primary-hover: #005a9e;
+  --secondary-color: #1e1e1e;
+  --tertiary-color: #2d2d2d;
+  --accent-color: #00d4ff;
+  --accent-hover: #00b8e6;
+  --highlight-color: #007acc;
+  --success-color: #4caf50;
+  --warning-color: #ff9800;
+  --error-color: #f44336;
+  --info-color: #2196f3;
+
+  /* 背景色 */
+  --bg-primary: #0a0e27;
+  --bg-secondary: rgba(10, 14, 39, 0.9);
+  --bg-tertiary: rgba(16, 22, 56, 0.7);
+  --bg-quaternary: rgba(20, 28, 70, 0.5);
+  --bg-transparent: transparent;
+
+  /* 文本色 */
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --text-tertiary: #999999;
+  --text-muted: #666666;
+
+  /* 边框色 */
+  --border-primary: #444444;
+  --border-secondary: #333333;
+  --border-light: #555555;
+  --border-muted: #666666;
+
+  /* RGB值，用于rgba计算 */
+  --primary-rgb: 0, 122, 204;
+  --secondary-rgb: 30, 30, 30;
+  --tertiary-rgb: 45, 45, 45;
+  --accent-rgb: 0, 212, 255;
+  --highlight-rgb: 0, 122, 204;
+  --bg-primary-rgb: 18, 18, 18;
+  --bg-secondary-rgb: 30, 30, 30;
+  --bg-tertiary-rgb: 45, 45, 45;
+  --text-primary-rgb: 255, 255, 255;
+  --text-secondary-rgb: 204, 204, 204;
+  --border-primary-rgb: 68, 68, 68;
+  --metric-warning-rgb: 255, 152, 0;
+
+  /* 阴影 */
+  --shadow-primary: rgba(0, 122, 204, 0.5);
+  --shadow-secondary: rgba(0, 0, 0, 0.3);
+  --shadow-tertiary: rgba(0, 0, 0, 0.5);
+
+  /* 间距 */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 48px;
+
+  /* 圆角 */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-round: 50%;
+
+  /* 字体大小 */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-xxl: 1.5rem;
+
+  /* 字体权重 */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* 边框宽度 */
+  --border-width-thin: 1px;
+  --border-width-medium: 2px;
+  --border-width-thick: 3px;
+
+  /* 过渡效果 */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+
+  /* 透明度 */
+  --opacity-low: 0.3;
+  --opacity-medium: 0.5;
+  --opacity-high: 0.8;
+  --opacity-full: 1;
+
+  /* 布局 */
+  --sidebar-width: 300px;
+  --header-height: 60px;
+  --chart-height: 300px;
+  --chart-width: 100%;
+
+  /* 深色主题 - 用于主题切换 */
+  --bg-primary-dark: #0a0e27;
+  --bg-secondary-dark: rgba(10, 14, 39, 0.9);
+  --bg-tertiary-dark: rgba(16, 22, 56, 0.7);
+  --text-primary-dark: #00d4ff;
+  --text-secondary-dark: #8ba3ed;
+  --border-primary-dark: rgba(0, 212, 255, 0.5);
+  --border-secondary-dark: rgba(0, 212, 255, 0.2);
+  --shadow-primary-dark: rgba(0, 212, 255, 0.2);
+  --shadow-secondary-dark: rgba(0, 212, 255, 0.1);
+  --highlight-dark: rgba(0, 212, 255, 0.3);
+  --metric-success-dark: #06d6a0;
+  --metric-success-shadow-dark: rgba(6, 214, 160, 0.8);
+  --metric-warning-dark: #ffd166;
+  --metric-warning-shadow-dark: rgba(255, 209, 102, 0.8);
+  --metric-error-dark: #ff6b6b;
+  --metric-error-shadow-dark: rgba(255, 107, 107, 0.8);
+
+  /* 拓扑图节点和连线颜色 - 深色主题 */
+  --node-electric-bus-dark: #4fa3f7;
+  --node-generator-dark: #4fa3f7;
+  --node-gas-dark: #ffa500;
+  --node-source-dark: #ffa500;
+  --node-default-dark: #999;
+  /* 统一连接线颜色样式 */
+  --link-electric-branch-dark: #4fa3f7; /* 电力系统连接线 - 蓝色 */
+  --link-generator-connection-dark: #4fa3f7; /* 电力系统连接线 - 蓝色 */
+  --link-gas-pipe-dark: #ffa500; /* 燃气系统连接线 - 橙色 */
+  --link-gas-source-connection-dark: #ffa500; /* 燃气系统连接线 - 橙色 */
+  --link-coupling-dark: #9c27b0; /* 耦合连接 - 紫色 */
+
+  /* 当前主题使用的变量 */
+  --bg-primary: var(--bg-primary-dark);
+  --bg-secondary: var(--bg-secondary-dark);
+  --bg-tertiary: var(--bg-tertiary-dark);
+  --text-primary: var(--text-primary-dark);
+  --text-secondary: var(--text-secondary-dark);
+  --border-primary: var(--border-primary-dark);
+  --border-secondary: var(--border-secondary-dark);
+  --shadow-primary: var(--shadow-primary-dark);
+  --shadow-secondary: var(--shadow-secondary-dark);
+  --highlight: var(--highlight-dark);
+  --metric-success: var(--metric-success-dark);
+  --metric-success-shadow: var(--metric-success-shadow-dark);
+  --metric-warning: var(--metric-warning-dark);
+  --metric-warning-shadow: var(--metric-warning-shadow-dark);
+  --metric-error: var(--metric-error-dark);
+  --metric-error-shadow: var(--metric-error-shadow-dark);
+  /* 拓扑图节点和连线颜色 - 当前主题 */
+  --node-electric-bus: var(--node-electric-bus-dark);
+  --node-generator: var(--node-generator-dark);
+  --node-gas: var(--node-gas-dark);
+  --node-source: var(--node-source-dark);
+  --node-default: var(--node-default-dark);
+  --link-electric-branch: var(--link-electric-branch-dark);
+  --link-generator-connection: var(--link-generator-connection-dark);
+  --link-gas-pipe: var(--link-gas-pipe-dark);
+  --link-gas-source-connection: var(--link-gas-source-connection-dark);
+  --link-coupling: var(--link-coupling-dark);
+}

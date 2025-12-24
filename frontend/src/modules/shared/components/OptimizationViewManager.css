@@ -1,0 +1,183 @@
+.optimization-view-manager {
+  padding: 20px;
+  background-color: var(--bg-secondary);
+  border-radius: 8px;
+  border: 1px solid var(--border-primary);
+  margin-bottom: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 15px var(--shadow-primary);
+}
+
+.optimization-view-manager .panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.optimization-view-manager .panel-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  text-shadow: 0 0 5px var(--shadow-primary);
+}
+
+.back-btn,
+.refresh-btn {
+  background-color: var(--highlight);
+  color: var(--text-primary);
+  border: 1px solid var(--border-primary);
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 8px var(--shadow-primary);
+}
+
+.back-btn:hover,
+.refresh-btn:hover {
+  background-color: var(--highlight);
+  border-color: var(--text-primary);
+  box-shadow: 0 0 15px var(--shadow-primary);
+}
+
+/* 迭代信息样式 */
+.iteration-info {
+  padding: 10px 0;
+}
+
+.iteration-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.iteration-header h4 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+}
+
+.timestamp {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  opacity: 0.8;
+}
+
+.iteration-metrics {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.metric-card {
+  flex: 1;
+  background-color: var(--bg-tertiary);
+  border-radius: 6px;
+  padding: 15px;
+  text-align: center;
+  border: 1px solid var(--border-primary);
+  backdrop-filter: blur(5px);
+}
+
+.metric-label {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 5px;
+}
+
+.metric-value {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.iteration-details h4,
+.iteration-navigation h4 {
+  margin: 0 0 12px 0;
+  font-size: 1rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background-color: var(--bg-tertiary);
+  border-radius: 4px;
+  border: 1px solid var(--border-secondary);
+  font-size: 0.9rem;
+  backdrop-filter: blur(5px);
+}
+
+.detail-label {
+  color: var(--text-primary);
+  opacity: 0.8;
+}
+
+.detail-value {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.iteration-steps {
+  display: flex;
+  gap: 8px;
+}
+
+.step-btn {
+  flex: 1;
+  padding: 8px;
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-primary);
+  border-radius: 4px;
+  color: var(--text-primary);
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.step-btn:hover {
+  background-color: var(--highlight);
+  border-color: var(--text-primary);
+}
+
+.step-btn.active {
+  background-color: var(--highlight);
+  border-color: var(--text-primary);
+  box-shadow: 0 0 10px var(--shadow-primary);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .optimization-view-manager {
+    padding: 15px;
+  }
+
+  .iteration-metrics {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .iteration-steps {
+    flex-wrap: wrap;
+  }
+}

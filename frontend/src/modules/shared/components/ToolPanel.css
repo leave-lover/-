@@ -1,0 +1,98 @@
+.tool-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  backdrop-filter: blur(10px);
+}
+
+/* 工具导航栏 */
+.tool-navigation {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.tool-navigation h3 {
+  margin: 0 0 15px 0;
+  padding: 0 20px;
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  text-shadow: 0 0 5px var(--shadow-primary);
+}
+
+/* 工具列表 */
+.tool-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tool-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-left: 3px solid transparent;
+  color: var(--text-primary);
+}
+
+.tool-item:hover {
+  background-color: var(--bg-tertiary);
+  box-shadow: 0 0 10px var(--shadow-primary);
+}
+
+.tool-item.active {
+  background-color: var(--highlight);
+  border-left: 3px solid var(--text-primary);
+  box-shadow: 0 0 15px var(--shadow-primary);
+}
+
+.tool-icon {
+  margin-right: 10px;
+  font-size: 1.2rem;
+  text-shadow: 0 0 5px var(--shadow-primary);
+}
+
+.tool-name {
+  font-size: 1rem;
+  color: var(--text-primary);
+  text-shadow: 0 0 3px var(--shadow-primary);
+}
+
+/* 工具内容区域 */
+.tool-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  background-color: var(--bg-tertiary);
+}
+
+.tool-wrapper {
+  height: 100%;
+}
+
+.tool-wrapper h2 {
+  margin-top: 0;
+  color: var(--text-primary);
+  text-shadow: 0 0 5px var(--shadow-primary);
+}
+
+.placeholder-content {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-primary);
+  border-radius: 4px;
+  text-align: center;
+  backdrop-filter: blur(5px);
+}
+
+.placeholder-content p {
+  margin: 0;
+  color: var(--text-primary);
+  font-style: italic;
+  opacity: 0.8;
+  text-shadow: 0 0 3px var(--shadow-primary);
+}

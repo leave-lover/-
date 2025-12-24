@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>双层优化迭代历史可视化</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f4f7fc;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+
+      .subtitle {
+        font-size: 16px;
+        opacity: 0.9;
+      }
+
+      .chart-section {
+        background: white;
+        border-radius: 8px;
+        padding: 25px;
+        margin-bottom: 30px;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+      }
+
+      .chart-title {
+        font-size: 20px;
+        margin-bottom: 20px;
+        color: #4a5568;
+        font-weight: 600;
+      }
+
+      .chart-container {
+        position: relative;
+        height: 400px;
+        margin-bottom: 20px;
+      }
+
+      .results-section {
+        background: white;
+        border-radius: 8px;
+        padding: 25px;
+        margin-bottom: 30px;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+      }
+
+      .results-title {
+        font-size: 20px;
+        margin-bottom: 20px;
+        color: #4a5568;
+        font-weight: 600;
+      }
+
+      .strategy-card {
+        background: #f7fafc;
+        border-radius: 6px;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-left: 4px solid #667eea;
+      }
+
+      .strategy-title {
+        font-size: 18px;
+        margin-bottom: 15px;
+        color: #2d3748;
+        font-weight: 600;
+      }
+
+      .strategy-info {
+        margin-bottom: 15px;
+      }
+
+      .info-item {
+        margin-bottom: 10px;
+      }
+
+      .info-label {
+        font-weight: 600;
+        color: #4a5568;
+        display: inline-block;
+        width: 120px;
+      }
+
+      .info-value {
+        color: #2d3748;
+      }
+
+      .nodes-list {
+        margin-left: 120px;
+        margin-top: 5px;
+      }
+
+      .node-item {
+        display: inline-block;
+        background: #667eea;
+        color: white;
+        padding: 4px 10px;
+        border-radius: 12px;
+        font-size: 12px;
+        margin: 2px;
+      }
+
+      .summary-section {
+        background: white;
+        border-radius: 8px;
+        padding: 25px;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+      }
+
+      .summary-title {
+        font-size: 20px;
+        margin-bottom: 20px;
+        color: #4a5568;
+        font-weight: 600;
+      }
+
+      .summary-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+      }
+
+      .stat-card {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .stat-value {
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 5px;
+      }
+
+      .stat-label {
+        font-size: 14px;
+        opacity: 0.9;
+      }
+
+      .loading {
+        text-align: center;
+        padding: 100px;
+        font-size: 20px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>电力-天然气耦合系统攻击双层优化</h1>
+        <div class="subtitle">迭代历史可视化展示</div>
+      </header>
+
+      <div class="chart-section">
+        <div class="chart-title">迭代历史曲线</div>
+        <div class="chart-container">
+          <canvas id="iterationChart"></canvas>
+        </div>
+      </div>
+
+      <div class="results-section">
+        <div class="results-title">最佳攻击策略</div>
+        <div class="strategy-card">
+          <div class="strategy-title">攻击节点信息</div>
+          <div class="strategy-info">
+            <div class="info-item">
+              <span class="info-label">电力攻击节点:</span>
+              <div class="nodes-list" id="electricNodes"></div>
+            </div>
+            <div class="info-item">
+              <span class="info-label">天然气攻击节点:</span>
+              <div class="nodes-list" id="gasNodes"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="summary-section">
+        <div class="summary-title">优化结果摘要</div>
+        <div class="summary-stats">
+          <div class="stat-card">
+            <div class="stat-value" id="totalIterations">--</div>
+            <div class="stat-label">总迭代轮次</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="bestIteration">--</div>
+            <div class="stat-label">最佳迭代轮次</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="maxUpperObjective">--</div>
+            <div class="stat-label">最大上层目标值</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="minLowerCost">--</div>
+            <div class="stat-label">最小下层成本</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="baselineCost">--</div>
+            <div class="stat-label">基准情况总成本</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // 加载JSON数据
+      async function loadData() {
+        try {
+          const response = await fetch("iteration_results.json");
+          const data = await response.json();
+          return data;
+        } catch (error) {
+          console.error("加载数据失败:", error);
+          return null;
+        }
+      }
+
+      // 绘制图表
+      function drawChart(data) {
+        const ctx = document.getElementById("iterationChart").getContext("2d");
+
+        // 创建数据集数组
+        const datasets = [
+          {
+            label: "上层目标值",
+            data: data.upper_objective,
+            borderColor: "#667eea",
+            backgroundColor: "rgba(102, 126, 234, 0.1)",
+            tension: 0.4,
+            fill: true,
+            yAxisID: "y",
+          },
+          {
+            label: "下层成本值",
+            data: data.lower_cost,
+            borderColor: "#f56565",
+            backgroundColor: "rgba(245, 101, 101, 0.1)",
+            tension: 0.4,
+            fill: true,
+            yAxisID: "y1",
+          },
+        ];
+
+        // 添加基准成本线（如果存在）
+        if (data.baseline_cost !== undefined && data.baseline_cost !== null) {
+          datasets.push({
+            label: "基准情况成本",
+            data: Array(data.iterations.length).fill(data.baseline_cost),
+            borderColor: "#ff6b6b",
+            backgroundColor: "transparent",
+            tension: 0,
+            fill: false,
+            borderDash: [5, 3],
+            yAxisID: "y1",
+          });
+        }
+
+        new Chart(ctx, {
+          type: "line",
+          data: {
+            labels: data.iterations,
+            datasets: datasets,
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                position: "top",
+              },
+              title: {
+                display: false,
+              },
+              tooltip: {
+                mode: "index",
+                intersect: false,
+              },
+            },
+            scales: {
+              x: {
+                title: {
+                  display: true,
+                  text: "迭代轮次",
+                },
+              },
+              y: {
+                type: "linear",
+                display: true,
+                position: "left",
+                title: {
+                  display: true,
+                  text: "上层目标值",
+                },
+              },
+              y1: {
+                type: "linear",
+                display: true,
+                position: "right",
+                title: {
+                  display: true,
+                  text: "下层成本值",
+                },
+                grid: {
+                  drawOnChartArea: false,
+                },
+              },
+            },
+            interaction: {
+              mode: "nearest",
+              axis: "x",
+              intersect: false,
+            },
+          },
+        });
+      }
+
+      // 显示最佳策略信息
+      function displayBestStrategy(strategy) {
+        // 显示电力攻击节点
+        const electricNodesEl = document.getElementById("electricNodes");
+        if (strategy.electric_nodes && strategy.electric_nodes.length > 0) {
+          electricNodesEl.innerHTML = strategy.electric_nodes
+            .map((node) => `<span class="node-item">节点${node}</span>`)
+            .join("");
+        } else {
+          electricNodesEl.innerHTML = '<span style="color: #999;">无</span>';
+        }
+
+        // 显示天然气攻击节点
+        const gasNodesEl = document.getElementById("gasNodes");
+        if (strategy.gas_nodes && strategy.gas_nodes.length > 0) {
+          gasNodesEl.innerHTML = strategy.gas_nodes
+            .map((node) => `<span class="node-item">节点${node}</span>`)
+            .join("");
+        } else {
+          gasNodesEl.innerHTML = '<span style="color: #999;">无</span>';
+        }
+      }
+
+      // 显示摘要信息
+      function displaySummary(data) {
+        document.getElementById("totalIterations").textContent =
+          data.total_iterations;
+        document.getElementById("bestIteration").textContent = 1; // 最佳迭代轮次固定为1
+        document.getElementById("maxUpperObjective").textContent = Math.max(
+          ...data.upper_objective
+        ).toFixed(4);
+        document.getElementById("minLowerCost").textContent = Math.min(
+          ...data.lower_cost
+        ).toFixed(2);
+      }
+
+      // 主函数
+      async function main() {
+        const data = await loadData();
+        if (data) {
+          drawChart(data);
+          displayBestStrategy(data.best_strategy);
+          displaySummary(data);
+        } else {
+          document.querySelector(".container").innerHTML =
+            '<div class="loading">数据加载失败，请确保 iteration_results.json 文件存在</div>';
+        }
+      }
+
+      // 页面加载完成后执行
+      window.addEventListener("DOMContentLoaded", main);
+    </script>
+  </body>
+</html>

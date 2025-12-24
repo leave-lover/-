@@ -1,0 +1,115 @@
+/* 拓扑图错误处理样式 */
+
+.topology-errors {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  max-width: 400px;
+  z-index: 1000;
+}
+
+.error-item {
+  background-color: var(--bg-secondary);
+  border-left: 4px solid var(--metric-error);
+  border: 1px solid var(--metric-error);
+  padding: 12px 16px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  box-shadow: 0 0 15px var(--metric-error-shadow);
+  font-size: 14px;
+  animation: slideIn 0.3s ease-out;
+  backdrop-filter: blur(10px);
+}
+
+.error-item.severity-medium {
+  background-color: var(--bg-secondary);
+  border-left-color: var(--metric-warning);
+  border-color: var(--metric-warning);
+  box-shadow: 0 0 15px var(--metric-warning-shadow);
+}
+
+.error-item.severity-high {
+  background-color: var(--bg-secondary);
+  border-left-color: var(--metric-error);
+  border-color: var(--metric-error);
+  box-shadow: 0 0 15px var(--metric-error-shadow);
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* 隔离模式样式 */
+.topology-error-isolated {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: var(--bg-primary);
+  backdrop-filter: blur(10px);
+}
+
+.topology-error-isolated .error-content {
+  background-color: var(--bg-secondary);
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 30px var(--shadow-primary);
+  text-align: center;
+  max-width: 500px;
+  border: 1px solid var(--border-primary);
+  backdrop-filter: blur(15px);
+}
+
+.topology-error-isolated h3 {
+  color: var(--metric-error);
+  margin-top: 0;
+  text-shadow: 0 0 8px var(--metric-error-shadow);
+}
+
+.topology-error-isolated p {
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+.topology-error-isolated button {
+  background-color: rgba(0, 192, 142, 0.2);
+  color: var(--metric-success);
+  border: 1px solid var(--metric-success);
+  padding: 12px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px var(--metric-success-shadow);
+}
+
+.topology-error-isolated button:hover {
+  background-color: rgba(0, 192, 142, 0.3);
+  box-shadow: 0 0 20px var(--metric-success-shadow);
+  border-color: var(--metric-success);
+}
+
+.error-list {
+  text-align: left;
+  margin: 20px 0;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.error-list .error-item {
+  margin-bottom: 8px;
+  padding: 8px 12px;
+}
+
+.error-list .error-item small {
+  display: block;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}

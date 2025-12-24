@@ -1,0 +1,1254 @@
+{
+    "links":  [
+                  {
+                      "r":  0.0035,
+                      "source":  "E1",
+                      "target":  "E2",
+                      "type":  "electric_branch",
+                      "x":  0.0411
+                  },
+                  {
+                      "r":  0.001,
+                      "source":  "E1",
+                      "target":  "E39",
+                      "type":  "electric_branch",
+                      "x":  0.025
+                  },
+                  {
+                      "r":  0.0013,
+                      "source":  "E2",
+                      "target":  "E3",
+                      "type":  "electric_branch",
+                      "x":  0.0151
+                  },
+                  {
+                      "r":  0.007,
+                      "source":  "E2",
+                      "target":  "E25",
+                      "type":  "electric_branch",
+                      "x":  0.0086
+                  },
+                  {
+                      "r":  0.0,
+                      "source":  "E2",
+                      "target":  "E30",
+                      "type":  "electric_branch",
+                      "x":  0.0181
+                  },
+                  {
+                      "r":  0.0013,
+                      "source":  "E3",
+                      "target":  "E4",
+                      "type":  "electric_branch",
+                      "x":  0.0213
+                  },
+                  {
+                      "r":  0.0011,
+                      "source":  "E3",
+                      "target":  "E18",
+                      "type":  "electric_branch",
+                      "x":  0.0133
+                  },
+                  {
+                      "r":  0.0008,
+                      "source":  "E4",
+                      "target":  "E5",
+                      "type":  "electric_branch",
+                      "x":  0.0128
+                  },
+                  {
+                      "r":  0.0008,
+                      "source":  "E4",
+                      "target":  "E14",
+                      "type":  "electric_branch",
+                      "x":  0.0129
+                  },
+                  {
+                      "r":  0.0002,
+                      "source":  "E5",
+                      "target":  "E6",
+                      "type":  "electric_branch",
+                      "x":  0.0026
+                  },
+                  {
+                      "r":  0.0008,
+                      "source":  "E5",
+                      "target":  "E8",
+                      "type":  "electric_branch",
+                      "x":  0.0112
+                  },
+                  {
+                      "r":  0.0006,
+                      "source":  "E6",
+                      "target":  "E7",
+                      "type":  "electric_branch",
+                      "x":  0.0092
+                  },
+                  {
+                      "r":  0.0007,
+                      "source":  "E6",
+                      "target":  "E11",
+                      "type":  "electric_branch",
+                      "x":  0.0082
+                  },
+                  {
+                      "r":  0.0,
+                      "source":  "E6",
+                      "target":  "E31",
+                      "type":  "electric_branch",
+                      "x":  0.025
+                  },
+                  {
+                      "r":  0.0004,
+                      "source":  "E7",
+                      "target":  "E8",
+                      "type":  "electric_branch",
+                      "x":  0.0046
+                  },
+                  {
+                      "r":  0.0023,
+                      "source":  "E8",
+                      "target":  "E9",
+                      "type":  "electric_branch",
+                      "x":  0.0363
+                  },
+                  {
+                      "r":  0.001,
+                      "source":  "E9",
+                      "target":  "E39",
+                      "type":  "electric_branch",
+                      "x":  0.025
+                  },
+                  {
+                      "r":  0.0004,
+                      "source":  "E10",
+                      "target":  "E11",
+                      "type":  "electric_branch",
+                      "x":  0.0043
+                  },
+                  {
+                      "r":  0.0004,
+                      "source":  "E10",
+                      "target":  "E13",
+                      "type":  "electric_branch",
+                      "x":  0.0043
+                  },
+                  {
+                      "r":  0.0,
+                      "source":  "E10",
+                      "target":  "E32",
+                      "type":  "electric_branch",
+                      "x":  0.02
+                  },
+                  {
+                      "r":  0.0016,
+                      "source":  "E12",
+                      "target":  "E11",
+                      "type":  "electric_branch",
+                      "x":  0.0435
+                  },
+                  {
+                      "r":  0.0016,
+                      "source":  "E12",
+                      "target":  "E13",
+                      "type":  "electric_branch",
+                      "x":  0.0435
+                  },
+                  {
+                      "r":  0.0009,
+                      "source":  "E13",
+                      "target":  "E14",
+                      "type":  "electric_branch",
+                      "x":  0.0101
+                  },
+                  {
+                      "r":  0.0018,
+                      "source":  "E14",
+                      "target":  "E15",
+                      "type":  "electric_branch",
+                      "x":  0.0217
+                  },
+                  {
+                      "r":  0.0009,
+                      "source":  "E15",
+                      "target":  "E16",
+                      "type":  "electric_branch",
+                      "x":  0.0094
+                  },
+                  {
+                      "r":  0.0007,
+                      "source":  "E16",
+                      "target":  "E17",
+                      "type":  "electric_branch",
+                      "x":  0.0089
+                  },
+                  {
+                      "r":  0.0016,
+                      "source":  "E16",
+                      "target":  "E19",
+                      "type":  "electric_branch",
+                      "x":  0.0195
+                  },
+                  {
+                      "r":  0.0008,
+                      "source":  "E16",
+                      "target":  "E21",
+                      "type":  "electric_branch",
+                      "x":  0.0135
+                  },
+                  {
+                      "r":  0.0003,
+                      "source":  "E16",
+                      "target":  "E24",
+                      "type":  "electric_branch",
+                      "x":  0.0059
+                  },
+                  {
+                      "r":  0.0007,
+                      "source":  "E17",
+                      "target":  "E18",
+                      "type":  "electric_branch",
+                      "x":  0.0082
+                  },
+                  {
+                      "r":  0.0013,
+                      "source":  "E17",
+                      "target":  "E27",
+                      "type":  "electric_branch",
+                      "x":  0.0173
+                  },
+                  {
+                      "r":  0.0007,
+                      "source":  "E19",
+                      "target":  "E20",
+                      "type":  "electric_branch",
+                      "x":  0.0138
+                  },
+                  {
+                      "r":  0.0007,
+                      "source":  "E19",
+                      "target":  "E33",
+                      "type":  "electric_branch",
+                      "x":  0.0142
+                  },
+                  {
+                      "r":  0.0009,
+                      "source":  "E20",
+                      "target":  "E34",
+                      "type":  "electric_branch",
+                      "x":  0.018
+                  },
+                  {
+                      "r":  0.0008,
+                      "source":  "E21",
+                      "target":  "E22",
+                      "type":  "electric_branch",
+                      "x":  0.014
+                  },
+                  {
+                      "r":  0.0006,
+                      "source":  "E22",
+                      "target":  "E23",
+                      "type":  "electric_branch",
+                      "x":  0.0096
+                  },
+                  {
+                      "r":  0.0,
+                      "source":  "E22",
+                      "target":  "E35",
+                      "type":  "electric_branch",
+                      "x":  0.0143
+                  },
+                  {
+                      "r":  0.0022,
+                      "source":  "E23",
+                      "target":  "E24",
+                      "type":  "electric_branch",
+                      "x":  0.035
+                  },
+                  {
+                      "r":  0.0005,
+                      "source":  "E23",
+                      "target":  "E36",
+                      "type":  "electric_branch",
+                      "x":  0.0272
+                  },
+                  {
+                      "r":  0.0032,
+                      "source":  "E25",
+                      "target":  "E26",
+                      "type":  "electric_branch",
+                      "x":  0.0323
+                  },
+                  {
+                      "r":  0.0006,
+                      "source":  "E25",
+                      "target":  "E37",
+                      "type":  "electric_branch",
+                      "x":  0.0232
+                  },
+                  {
+                      "r":  0.0014,
+                      "source":  "E26",
+                      "target":  "E27",
+                      "type":  "electric_branch",
+                      "x":  0.0147
+                  },
+                  {
+                      "r":  0.0043,
+                      "source":  "E26",
+                      "target":  "E28",
+                      "type":  "electric_branch",
+                      "x":  0.0474
+                  },
+                  {
+                      "r":  0.0057,
+                      "source":  "E26",
+                      "target":  "E29",
+                      "type":  "electric_branch",
+                      "x":  0.0625
+                  },
+                  {
+                      "r":  0.0014,
+                      "source":  "E28",
+                      "target":  "E29",
+                      "type":  "electric_branch",
+                      "x":  0.0151
+                  },
+                  {
+                      "r":  0.0008,
+                      "source":  "E29",
+                      "target":  "E38",
+                      "type":  "electric_branch",
+                      "x":  0.0156
+                  },
+                  {
+                      "source":  "G1",
+                      "target":  "E30",
+                      "type":  "generator_connection",
+                      "value":  78.0
+                  },
+                  {
+                      "source":  "G2",
+                      "target":  "E31",
+                      "type":  "generator_connection",
+                      "value":  0.0
+                  },
+                  {
+                      "source":  "G3",
+                      "target":  "E32",
+                      "type":  "generator_connection",
+                      "value":  38.0
+                  },
+                  {
+                      "source":  "G4",
+                      "target":  "E33",
+                      "type":  "generator_connection",
+                      "value":  38.0
+                  },
+                  {
+                      "source":  "G5",
+                      "target":  "E34",
+                      "type":  "generator_connection",
+                      "value":  0.0
+                  },
+                  {
+                      "source":  "G6",
+                      "target":  "E35",
+                      "type":  "generator_connection",
+                      "value":  25.0
+                  },
+                  {
+                      "source":  "G7",
+                      "target":  "E36",
+                      "type":  "generator_connection",
+                      "value":  0.0
+                  },
+                  {
+                      "source":  "G8",
+                      "target":  "E37",
+                      "type":  "generator_connection",
+                      "value":  0.0
+                  },
+                  {
+                      "source":  "G9",
+                      "target":  "E38",
+                      "type":  "generator_connection",
+                      "value":  0.0
+                  },
+                  {
+                      "source":  "G10",
+                      "target":  "E39",
+                      "type":  "generator_connection",
+                      "value":  0.0
+                  },
+                  {
+                      "capacity":  0.07,
+                      "source":  "GAS1",
+                      "target":  "GAS2",
+                      "type":  "gas_pipe"
+                  },
+                  {
+                      "capacity":  0.404,
+                      "source":  "GAS2",
+                      "target":  "GAS3",
+                      "type":  "gas_pipe"
+                  },
+                  {
+                      "capacity":  0.39,
+                      "source":  "GAS3",
+                      "target":  "GAS4",
+                      "type":  "gas_pipe"
+                  },
+                  {
+                      "capacity":  0.1,
+                      "source":  "GAS5",
+                      "target":  "GAS6",
+                      "type":  "gas_pipe"
+                  },
+                  {
+                      "capacity":  0.15,
+                      "source":  "GAS6",
+                      "target":  "GAS7",
+                      "type":  "gas_pipe"
+                  },
+                  {
+                      "capacity":  0.22,
+                      "source":  "GAS7",
+                      "target":  "GAS4",
+                      "type":  "gas_pipe"
+                  },
+                  {
+                      "capacity":  0.66,
+                      "source":  "GAS4",
+                      "target":  "GAS14",
+                      "type":  "gas_pipe"
+                  },
+                  {
+                      "capacity":  0.26,
+                      "source":  "GAS8",
+                      "target":  "GAS9",
+                      "type":  "gas_pipe"
+                  },
+                  {
+                      "capacity":  0.81,
+                      "source":  "GAS9",
+                      "target":  "GAS10",
+                      "type":  "gas_pipe"
+                  },
+                  {
+                      "capacity":  0.45,
+                      "source":  "GAS10",
+                      "target":  "GAS11",
+                      "type":  "gas_pipe"
+                  },
+                  {
+                      "capacity":  0.86,
+                      "source":  "GAS11",
+                      "target":  "GAS12",
+                      "type":  "gas_pipe"
+                  },
+                  {
+                      "capacity":  0.91,
+                      "source":  "GAS12",
+                      "target":  "GAS13",
+                      "type":  "gas_pipe"
+                  },
+                  {
+                      "capacity":  0.26,
+                      "source":  "GAS13",
+                      "target":  "GAS14",
+                      "type":  "gas_pipe"
+                  },
+                  {
+                      "capacity":  0.63,
+                      "source":  "GAS14",
+                      "target":  "GAS15",
+                      "type":  "gas_pipe"
+                  },
+                  {
+                      "capacity":  0.45,
+                      "source":  "GAS15",
+                      "target":  "GAS16",
+                      "type":  "gas_pipe"
+                  },
+                  {
+                      "capacity":  0.05,
+                      "source":  "GAS11",
+                      "target":  "GAS17",
+                      "type":  "gas_pipe"
+                  },
+                  {
+                      "capacity":  0.006,
+                      "source":  "GAS17",
+                      "target":  "GAS18",
+                      "type":  "gas_pipe"
+                  },
+                  {
+                      "capacity":  0.002,
+                      "source":  "GAS18",
+                      "target":  "GAS19",
+                      "type":  "gas_pipe"
+                  },
+                  {
+                      "capacity":  0.03,
+                      "source":  "GAS19",
+                      "target":  "GAS20",
+                      "type":  "gas_pipe"
+                  },
+                  {
+                      "source":  "GS1",
+                      "target":  "GAS1",
+                      "type":  "gas_source_connection",
+                      "value":  1.7391
+                  },
+                  {
+                      "source":  "GS2",
+                      "target":  "GAS2",
+                      "type":  "gas_source_connection",
+                      "value":  1.26
+                  },
+                  {
+                      "source":  "GS3",
+                      "target":  "GAS5",
+                      "type":  "gas_source_connection",
+                      "value":  0.72
+                  },
+                  {
+                      "source":  "GS4",
+                      "target":  "GAS8",
+                      "type":  "gas_source_connection",
+                      "value":  2.3018
+                  },
+                  {
+                      "source":  "GS5",
+                      "target":  "GAS13",
+                      "type":  "gas_source_connection",
+                      "value":  0.27
+                  },
+                  {
+                      "source":  "GS6",
+                      "target":  "GAS14",
+                      "type":  "gas_source_connection",
+                      "value":  1.44
+                  },
+                  {
+                      "source":  "GAS3",
+                      "target":  "E30",
+                      "type":  "coupling",
+                      "value":  "gas_to_power"
+                  },
+                  {
+                      "source":  "GAS6",
+                      "target":  "E33",
+                      "type":  "coupling",
+                      "value":  "gas_to_power"
+                  },
+                  {
+                      "source":  "GAS19",
+                      "target":  "E37",
+                      "type":  "coupling",
+                      "value":  "gas_to_power"
+                  }
+              ],
+    "nodes":  [
+                  {
+                      "bus_type":  1,
+                      "id":  "E1",
+                      "name":  "Bus 1",
+                      "pd":  97.6,
+                      "qd":  44.2,
+                      "type":  "electric_bus",
+                      "va":  -13.536602,
+                      "vm":  1.0393836
+                  },
+                  {
+                      "bus_type":  1,
+                      "id":  "E2",
+                      "name":  "Bus 2",
+                      "pd":  0.0,
+                      "qd":  0.0,
+                      "type":  "electric_bus",
+                      "va":  -9.7852666,
+                      "vm":  1.0484941
+                  },
+                  {
+                      "bus_type":  1,
+                      "id":  "E3",
+                      "name":  "Bus 3",
+                      "pd":  322.0,
+                      "qd":  2.4,
+                      "type":  "electric_bus",
+                      "va":  -12.276384,
+                      "vm":  1.0307077
+                  },
+                  {
+                      "bus_type":  1,
+                      "id":  "E4",
+                      "name":  "Bus 4",
+                      "pd":  500.0,
+                      "qd":  184.0,
+                      "type":  "electric_bus",
+                      "va":  -12.626734,
+                      "vm":  1.00446
+                  },
+                  {
+                      "bus_type":  1,
+                      "id":  "E5",
+                      "name":  "Bus 5",
+                      "pd":  0.0,
+                      "qd":  0.0,
+                      "type":  "electric_bus",
+                      "va":  -11.192339,
+                      "vm":  1.0060063
+                  },
+                  {
+                      "bus_type":  1,
+                      "id":  "E6",
+                      "name":  "Bus 6",
+                      "pd":  0.0,
+                      "qd":  0.0,
+                      "type":  "electric_bus",
+                      "va":  -10.40833,
+                      "vm":  1.0082256
+                  },
+                  {
+                      "bus_type":  1,
+                      "id":  "E7",
+                      "name":  "Bus 7",
+                      "pd":  233.8,
+                      "qd":  84.0,
+                      "type":  "electric_bus",
+                      "va":  -12.755626,
+                      "vm":  0.99839728
+                  },
+                  {
+                      "bus_type":  1,
+                      "id":  "E8",
+                      "name":  "Bus 8",
+                      "pd":  522.0,
+                      "qd":  176.6,
+                      "type":  "electric_bus",
+                      "va":  -13.335844,
+                      "vm":  0.99787232
+                  },
+                  {
+                      "bus_type":  1,
+                      "id":  "E9",
+                      "name":  "Bus 9",
+                      "pd":  6.5,
+                      "qd":  -66.6,
+                      "type":  "electric_bus",
+                      "va":  -14.178442,
+                      "vm":  1.038332
+                  },
+                  {
+                      "bus_type":  1,
+                      "id":  "E10",
+                      "name":  "Bus 10",
+                      "pd":  0.0,
+                      "qd":  0.0,
+                      "type":  "electric_bus",
+                      "va":  -8.170875,
+                      "vm":  1.0178431
+                  },
+                  {
+                      "bus_type":  1,
+                      "id":  "E11",
+                      "name":  "Bus 11",
+                      "pd":  0.0,
+                      "qd":  0.0,
+                      "type":  "electric_bus",
+                      "va":  -8.9369663,
+                      "vm":  1.0133858
+                  },
+                  {
+                      "bus_type":  1,
+                      "id":  "E12",
+                      "name":  "Bus 12",
+                      "pd":  8.53,
+                      "qd":  88.0,
+                      "type":  "electric_bus",
+                      "va":  -8.9988236,
+                      "vm":  1.000815
+                  },
+                  {
+                      "bus_type":  1,
+                      "id":  "E13",
+                      "name":  "Bus 13",
+                      "pd":  0.0,
+                      "qd":  0.0,
+                      "type":  "electric_bus",
+                      "va":  -8.9299272,
+                      "vm":  1.014923
+                  },
+                  {
+                      "bus_type":  1,
+                      "id":  "E14",
+                      "name":  "Bus 14",
+                      "pd":  0.0,
+                      "qd":  0.0,
+                      "type":  "electric_bus",
+                      "va":  -10.715295,
+                      "vm":  1.012319
+                  },
+                  {
+                      "bus_type":  1,
+                      "id":  "E15",
+                      "name":  "Bus 15",
+                      "pd":  320.0,
+                      "qd":  153.0,
+                      "type":  "electric_bus",
+                      "va":  -11.345399,
+                      "vm":  1.0161854
+                  },
+                  {
+                      "bus_type":  1,
+                      "id":  "E16",
+                      "name":  "Bus 16",
+                      "pd":  329.0,
+                      "qd":  32.3,
+                      "type":  "electric_bus",
+                      "va":  -10.033348,
+                      "vm":  1.0325203
+                  },
+                  {
+                      "bus_type":  1,
+                      "id":  "E17",
+                      "name":  "Bus 17",
+                      "pd":  0.0,
+                      "qd":  0.0,
+                      "type":  "electric_bus",
+                      "va":  -11.116436,
+                      "vm":  1.0342365
+                  },
+                  {
+                      "bus_type":  1,
+                      "id":  "E18",
+                      "name":  "Bus 18",
+                      "pd":  158.0,
+                      "qd":  30.0,
+                      "type":  "electric_bus",
+                      "va":  -11.986168,
+                      "vm":  1.0315726
+                  },
+                  {
+                      "bus_type":  1,
+                      "id":  "E19",
+                      "name":  "Bus 19",
+                      "pd":  0.0,
+                      "qd":  0.0,
+                      "type":  "electric_bus",
+                      "va":  -5.4100729,
+                      "vm":  1.0501068
+                  },
+                  {
+                      "bus_type":  1,
+                      "id":  "E20",
+                      "name":  "Bus 20",
+                      "pd":  680.0,
+                      "qd":  103.0,
+                      "type":  "electric_bus",
+                      "va":  -6.8211783,
+                      "vm":  0.99101054
+                  },
+                  {
+                      "bus_type":  1,
+                      "id":  "E21",
+                      "name":  "Bus 21",
+                      "pd":  274.0,
+                      "qd":  115.0,
+                      "type":  "electric_bus",
+                      "va":  -7.6287461,
+                      "vm":  1.0323192
+                  },
+                  {
+                      "bus_type":  1,
+                      "id":  "E22",
+                      "name":  "Bus 22",
+                      "pd":  0.0,
+                      "qd":  0.0,
+                      "type":  "electric_bus",
+                      "va":  -3.1831199,
+                      "vm":  1.0501427
+                  },
+                  {
+                      "bus_type":  1,
+                      "id":  "E23",
+                      "name":  "Bus 23",
+                      "pd":  247.5,
+                      "qd":  84.6,
+                      "type":  "electric_bus",
+                      "va":  -3.3812763,
+                      "vm":  1.0451451
+                  },
+                  {
+                      "bus_type":  1,
+                      "id":  "E24",
+                      "name":  "Bus 24",
+                      "pd":  308.6,
+                      "qd":  -92.2,
+                      "type":  "electric_bus",
+                      "va":  -9.9137585,
+                      "vm":  1.038001
+                  },
+                  {
+                      "bus_type":  1,
+                      "id":  "E25",
+                      "name":  "Bus 25",
+                      "pd":  224.0,
+                      "qd":  47.2,
+                      "type":  "electric_bus",
+                      "va":  -8.3692354,
+                      "vm":  1.0576827
+                  },
+                  {
+                      "bus_type":  1,
+                      "id":  "E26",
+                      "name":  "Bus 26",
+                      "pd":  139.0,
+                      "qd":  17.0,
+                      "type":  "electric_bus",
+                      "va":  -9.4387696,
+                      "vm":  1.0525613
+                  },
+                  {
+                      "bus_type":  1,
+                      "id":  "E27",
+                      "name":  "Bus 27",
+                      "pd":  281.0,
+                      "qd":  75.5,
+                      "type":  "electric_bus",
+                      "va":  -11.362152,
+                      "vm":  1.0383449
+                  },
+                  {
+                      "bus_type":  1,
+                      "id":  "E28",
+                      "name":  "Bus 28",
+                      "pd":  206.0,
+                      "qd":  27.6,
+                      "type":  "electric_bus",
+                      "va":  -5.9283592,
+                      "vm":  1.0503737
+                  },
+                  {
+                      "bus_type":  1,
+                      "id":  "E29",
+                      "name":  "Bus 29",
+                      "pd":  283.5,
+                      "qd":  26.9,
+                      "type":  "electric_bus",
+                      "va":  -3.1698741,
+                      "vm":  1.0501149
+                  },
+                  {
+                      "bus_type":  2,
+                      "id":  "E30",
+                      "name":  "Bus 30",
+                      "pd":  0.0,
+                      "qd":  0.0,
+                      "type":  "electric_bus",
+                      "va":  -7.3704746,
+                      "vm":  1.0499
+                  },
+                  {
+                      "bus_type":  3,
+                      "id":  "E31",
+                      "name":  "Bus 31",
+                      "pd":  9.2,
+                      "qd":  4.6,
+                      "type":  "electric_bus",
+                      "va":  0.0,
+                      "vm":  0.982
+                  },
+                  {
+                      "bus_type":  2,
+                      "id":  "E32",
+                      "name":  "Bus 32",
+                      "pd":  0.0,
+                      "qd":  0.0,
+                      "type":  "electric_bus",
+                      "va":  -0.1884374,
+                      "vm":  0.9841
+                  },
+                  {
+                      "bus_type":  2,
+                      "id":  "E33",
+                      "name":  "Bus 33",
+                      "pd":  0.0,
+                      "qd":  0.0,
+                      "type":  "electric_bus",
+                      "va":  -0.19317445,
+                      "vm":  0.9972
+                  },
+                  {
+                      "bus_type":  2,
+                      "id":  "E34",
+                      "name":  "Bus 34",
+                      "pd":  0.0,
+                      "qd":  0.0,
+                      "type":  "electric_bus",
+                      "va":  -1.631119,
+                      "vm":  1.0123
+                  },
+                  {
+                      "bus_type":  2,
+                      "id":  "E35",
+                      "name":  "Bus 35",
+                      "pd":  0.0,
+                      "qd":  0.0,
+                      "type":  "electric_bus",
+                      "va":  1.7765069,
+                      "vm":  1.0494
+                  },
+                  {
+                      "bus_type":  2,
+                      "id":  "E36",
+                      "name":  "Bus 36",
+                      "pd":  0.0,
+                      "qd":  0.0,
+                      "type":  "electric_bus",
+                      "va":  4.4684374,
+                      "vm":  1.0636
+                  },
+                  {
+                      "bus_type":  2,
+                      "id":  "E37",
+                      "name":  "Bus 37",
+                      "pd":  0.0,
+                      "qd":  0.0,
+                      "type":  "electric_bus",
+                      "va":  -1.5828988,
+                      "vm":  1.0275
+                  },
+                  {
+                      "bus_type":  2,
+                      "id":  "E38",
+                      "name":  "Bus 38",
+                      "pd":  0.0,
+                      "qd":  0.0,
+                      "type":  "electric_bus",
+                      "va":  3.8928177,
+                      "vm":  1.0265
+                  },
+                  {
+                      "bus_type":  2,
+                      "id":  "E39",
+                      "name":  "Bus 39",
+                      "pd":  1104.0,
+                      "qd":  250.0,
+                      "type":  "electric_bus",
+                      "va":  -14.535256,
+                      "vm":  1.03
+                  },
+                  {
+                      "connected_bus":  30,
+                      "id":  "G1",
+                      "name":  "Generator 1",
+                      "pg":  78.0,
+                      "pmax":  1040.0,
+                      "pmin":  100.0,
+                      "qg":  0.0,
+                      "type":  "generator"
+                  },
+                  {
+                      "connected_bus":  31,
+                      "id":  "G2",
+                      "name":  "Generator 2",
+                      "pg":  0.0,
+                      "pmax":  646.0,
+                      "pmin":  50.0,
+                      "qg":  0.0,
+                      "type":  "generator"
+                  },
+                  {
+                      "connected_bus":  32,
+                      "id":  "G3",
+                      "name":  "Generator 3",
+                      "pg":  38.0,
+                      "pmax":  725.0,
+                      "pmin":  70.0,
+                      "qg":  0.0,
+                      "type":  "generator"
+                  },
+                  {
+                      "connected_bus":  33,
+                      "id":  "G4",
+                      "name":  "Generator 4",
+                      "pg":  38.0,
+                      "pmax":  652.0,
+                      "pmin":  60.0,
+                      "qg":  0.0,
+                      "type":  "generator"
+                  },
+                  {
+                      "connected_bus":  34,
+                      "id":  "G5",
+                      "name":  "Generator 5",
+                      "pg":  0.0,
+                      "pmax":  508.0,
+                      "pmin":  50.0,
+                      "qg":  0.0,
+                      "type":  "generator"
+                  },
+                  {
+                      "connected_bus":  35,
+                      "id":  "G6",
+                      "name":  "Generator 6",
+                      "pg":  25.0,
+                      "pmax":  687.0,
+                      "pmin":  60.0,
+                      "qg":  0.0,
+                      "type":  "generator"
+                  },
+                  {
+                      "connected_bus":  36,
+                      "id":  "G7",
+                      "name":  "Generator 7",
+                      "pg":  0.0,
+                      "pmax":  580.0,
+                      "pmin":  50.0,
+                      "qg":  0.0,
+                      "type":  "generator"
+                  },
+                  {
+                      "connected_bus":  37,
+                      "id":  "G8",
+                      "name":  "Generator 8",
+                      "pg":  0.0,
+                      "pmax":  564.0,
+                      "pmin":  50.0,
+                      "qg":  0.0,
+                      "type":  "generator"
+                  },
+                  {
+                      "connected_bus":  38,
+                      "id":  "G9",
+                      "name":  "Generator 9",
+                      "pg":  0.0,
+                      "pmax":  865.0,
+                      "pmin":  80.0,
+                      "qg":  0.0,
+                      "type":  "generator"
+                  },
+                  {
+                      "connected_bus":  39,
+                      "id":  "G10",
+                      "name":  "Generator 10",
+                      "pg":  0.0,
+                      "pmax":  1100.0,
+                      "pmin":  110.0,
+                      "qg":  0.0,
+                      "type":  "generator"
+                  },
+                  {
+                      "id":  "GAS1",
+                      "load":  57.51,
+                      "name":  "Gas Node 1",
+                      "pressure_max":  77.0,
+                      "pressure_min":  0.0,
+                      "type":  "gas_node"
+                  },
+                  {
+                      "id":  "GAS2",
+                      "load":  57.17,
+                      "name":  "Gas Node 2",
+                      "pressure_max":  77.0,
+                      "pressure_min":  0.0,
+                      "type":  "gas_node"
+                  },
+                  {
+                      "id":  "GAS3",
+                      "load":  56.77,
+                      "name":  "Gas Node 3",
+                      "pressure_max":  80.0,
+                      "pressure_min":  30.0,
+                      "type":  "gas_node"
+                  },
+                  {
+                      "id":  "GAS4",
+                      "load":  55.02,
+                      "name":  "Gas Node 4",
+                      "pressure_max":  80.0,
+                      "pressure_min":  0.0,
+                      "type":  "gas_node"
+                  },
+                  {
+                      "id":  "GAS5",
+                      "load":  56.54,
+                      "name":  "Gas Node 5",
+                      "pressure_max":  77.0,
+                      "pressure_min":  0.0,
+                      "type":  "gas_node"
+                  },
+                  {
+                      "id":  "GAS6",
+                      "load":  55.37,
+                      "name":  "Gas Node 6",
+                      "pressure_max":  80.0,
+                      "pressure_min":  30.0,
+                      "type":  "gas_node"
+                  },
+                  {
+                      "id":  "GAS7",
+                      "load":  55.17,
+                      "name":  "Gas Node 7",
+                      "pressure_max":  80.0,
+                      "pressure_min":  30.0,
+                      "type":  "gas_node"
+                  },
+                  {
+                      "id":  "GAS8",
+                      "load":  57.73,
+                      "name":  "Gas Node 8",
+                      "pressure_max":  66.2,
+                      "pressure_min":  0.0,
+                      "type":  "gas_node"
+                  },
+                  {
+                      "id":  "GAS9",
+                      "load":  57.23,
+                      "name":  "Gas Node 9",
+                      "pressure_max":  66.2,
+                      "pressure_min":  0.0,
+                      "type":  "gas_node"
+                  },
+                  {
+                      "id":  "GAS10",
+                      "load":  55.97,
+                      "name":  "Gas Node 10",
+                      "pressure_max":  66.2,
+                      "pressure_min":  30.0,
+                      "type":  "gas_node"
+                  },
+                  {
+                      "id":  "GAS11",
+                      "load":  54.97,
+                      "name":  "Gas Node 11",
+                      "pressure_max":  66.2,
+                      "pressure_min":  0.0,
+                      "type":  "gas_node"
+                  },
+                  {
+                      "id":  "GAS12",
+                      "load":  53.83,
+                      "name":  "Gas Node 12",
+                      "pressure_max":  66.2,
+                      "pressure_min":  0.0,
+                      "type":  "gas_node"
+                  },
+                  {
+                      "id":  "GAS13",
+                      "load":  53.1,
+                      "name":  "Gas Node 13",
+                      "pressure_max":  66.2,
+                      "pressure_min":  0.0,
+                      "type":  "gas_node"
+                  },
+                  {
+                      "id":  "GAS14",
+                      "load":  52.99,
+                      "name":  "Gas Node 14",
+                      "pressure_max":  66.2,
+                      "pressure_min":  0.0,
+                      "type":  "gas_node"
+                  },
+                  {
+                      "id":  "GAS15",
+                      "load":  51.66,
+                      "name":  "Gas Node 15",
+                      "pressure_max":  66.2,
+                      "pressure_min":  0.0,
+                      "type":  "gas_node"
+                  },
+                  {
+                      "id":  "GAS16",
+                      "load":  50.0,
+                      "name":  "Gas Node 16",
+                      "pressure_max":  66.2,
+                      "pressure_min":  0.0,
+                      "type":  "gas_node"
+                  },
+                  {
+                      "id":  "GAS17",
+                      "load":  54.06,
+                      "name":  "Gas Node 17",
+                      "pressure_max":  66.2,
+                      "pressure_min":  0.0,
+                      "type":  "gas_node"
+                  },
+                  {
+                      "id":  "GAS18",
+                      "load":  52.0,
+                      "name":  "Gas Node 18",
+                      "pressure_max":  80.0,
+                      "pressure_min":  0.0,
+                      "type":  "gas_node"
+                  },
+                  {
+                      "id":  "GAS19",
+                      "load":  33.96,
+                      "name":  "Gas Node 19",
+                      "pressure_max":  66.2,
+                      "pressure_min":  0.0,
+                      "type":  "gas_node"
+                  },
+                  {
+                      "id":  "GAS20",
+                      "load":  31.62,
+                      "name":  "Gas Node 20",
+                      "pressure_max":  66.2,
+                      "pressure_min":  25.0,
+                      "type":  "gas_node"
+                  },
+                  {
+                      "connected_bus":  1,
+                      "id":  "GS1",
+                      "max_w":  1.7391,
+                      "min_w":  0.9,
+                      "name":  "Gas Source 1",
+                      "type":  "gas_source"
+                  },
+                  {
+                      "connected_bus":  2,
+                      "id":  "GS2",
+                      "max_w":  1.26,
+                      "min_w":  0.0,
+                      "name":  "Gas Source 2",
+                      "type":  "gas_source"
+                  },
+                  {
+                      "connected_bus":  5,
+                      "id":  "GS3",
+                      "max_w":  0.72,
+                      "min_w":  0.0,
+                      "name":  "Gas Source 3",
+                      "type":  "gas_source"
+                  },
+                  {
+                      "connected_bus":  8,
+                      "id":  "GS4",
+                      "max_w":  2.3018,
+                      "min_w":  1.0,
+                      "name":  "Gas Source 4",
+                      "type":  "gas_source"
+                  },
+                  {
+                      "connected_bus":  13,
+                      "id":  "GS5",
+                      "max_w":  0.27,
+                      "min_w":  0.0,
+                      "name":  "Gas Source 5",
+                      "type":  "gas_source"
+                  },
+                  {
+                      "connected_bus":  14,
+                      "id":  "GS6",
+                      "max_w":  1.44,
+                      "min_w":  0.0,
+                      "name":  "Gas Source 6",
+                      "type":  "gas_source"
+                  }
+              ]
+}

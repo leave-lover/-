@@ -1,0 +1,97 @@
+/* Sidebar组件样式 */
+.sidebar {
+  background-color: var(--bg-secondary);
+  border-right: var(--border-width-thin) solid var(--border-primary);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px var(--shadow-primary);
+  transition: all var(--transition-normal);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.sidebar--collapsed {
+  background-color: var(--bg-secondary);
+  border-right: var(--border-width-thin) solid var(--border-primary);
+  width: var(--sidebar-width);
+}
+
+.sidebar__header {
+  padding: var(--spacing-md);
+  border-bottom: var(--border-width-thin) solid var(--border-primary);
+  background: linear-gradient(
+    90deg,
+    rgba(var(--highlight-rgb), 0.1) 0%,
+    transparent 100%
+  );
+}
+
+.sidebar__header h2 {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  color: var(--text-primary);
+  font-weight: var(--font-weight-semibold);
+  text-shadow: 0 0 5px var(--shadow-primary);
+}
+
+.sidebar__nav {
+  padding: var(--spacing-sm) 0;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.collapsed-sidebar-footer {
+  padding: var(--spacing-sm);
+  text-align: center;
+  color: var(--text-primary);
+  font-size: var(--font-size-xs);
+  border-top: var(--border-width-thin) solid var(--border-primary);
+  text-shadow: 0 0 3px var(--shadow-primary);
+  background-color: var(--bg-tertiary);
+}
+
+/* 折线图样式 */
+.sidebar-chart-section {
+  padding: var(--spacing-md);
+  margin: var(--spacing-sm);
+  background-color: var(--bg-tertiary);
+  border-radius: var(--radius-lg);
+  border: var(--border-width-thin) solid var(--border-primary);
+  backdrop-filter: blur(5px);
+  transition: all var(--transition-normal);
+}
+
+.sidebar-chart-section:hover {
+  box-shadow: 0 4px 15px var(--shadow-primary);
+  transform: translateY(-1px);
+}
+
+.sidebar-chart-section h3 {
+  margin: 0 0 var(--spacing-md) 0;
+  font-size: var(--font-size-md);
+  color: var(--text-primary);
+  text-align: center;
+  font-weight: var(--font-weight-semibold);
+  text-shadow: 0 0 5px var(--shadow-primary);
+}
+
+.sidebar-chart-container {
+  margin-bottom: var(--spacing-lg);
+}
+
+.sidebar-chart-container:last-child {
+  margin-bottom: 0;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .sidebar-chart-section {
+    padding: var(--spacing-sm);
+    margin: var(--spacing-xs);
+  }
+
+  .sidebar-chart-section h3 {
+    font-size: var(--font-size-sm);
+  }
+}

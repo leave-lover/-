@@ -48,6 +48,7 @@ Thumbs.db
 ehthumbs.db
 
 # Virtual environments
+# Python virtual environments
 venv/
 env/
 ENV/

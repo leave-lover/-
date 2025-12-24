@@ -1,0 +1,263 @@
+/* App组件样式 */
+
+/* 柱状图拓展栏样式 */
+.chart-extension-panel {
+  position: fixed;
+  right: var(--sidebar-width); /* 使用CSS变量定位 */
+  top: var(--header-height); /* 与顶部栏底部对齐 */
+  width: 380px; /* 优化宽度，更适合图表展示 */
+  min-height: 300px; /* 增加最小高度，提供更好的图表空间 */
+  background-color: var(--bg-secondary);
+  border-left: 1px solid var(--border-primary);
+  border-right: none;
+  box-shadow: 0 0 20px var(--shadow-secondary);
+  transition: all var(--transition-normal);
+  z-index: 1000;
+  transform: translateX(100%); /* 初始状态完全隐藏在右侧栏左侧 */
+  visibility: hidden;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0 0 0 var(--radius-md);
+}
+
+.chart-extension-panel.open {
+  transform: translateX(0); /* 展开时完全显示在右侧栏左侧 */
+  visibility: visible;
+  opacity: 1;
+}
+
+/* 右侧栏保持固定位置，不需要调整margin */
+.sidebar-wrapper.with-chart-panel {
+  margin-right: 0;
+}
+
+.chart-panel-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-primary);
+  flex-shrink: 0;
+}
+
+.chart-panel-header h3 {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+}
+
+/* 显示/隐藏柱状图拓展栏按钮样式 - 始终存在于画面，与右侧栏左边界对齐 */
+.chart-panel-toggle {
+  background-color: var(--accent-color); /* 使用亮色背景，更明显 */
+  border: var(--border-width-thin) solid var(--text-primary);
+  border-right: none;
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
+  color: var(--bg-primary); /* 深色文字，与亮色背景形成对比 */
+  font-size: var(--font-size-xl);
+  width: 40px;
+  height: 80px;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: -4px 0 16px var(--shadow-primary);
+  visibility: visible;
+  opacity: 1;
+  border-left: none;
+}
+
+.chart-panel-toggle:hover {
+  background-color: var(--accent-hover);
+  color: var(--bg-primary);
+  transform: translateX(-5px);
+  box-shadow: -6px 0 20px var(--shadow-primary);
+}
+
+.chart-panel-toggle.active {
+  background-color: var(--highlight-color);
+  border-color: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+.chart-panel-content {
+  padding: var(--spacing-xs);
+  background-color: var(--bg-secondary);
+  overflow-y: visible;
+  flex: 1 1 auto;
+}
+
+.chart-container {
+  width: 100%;
+  height: 350px;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-placeholder {
+  background-color: transparent;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  height: var(--chart-height);
+  overflow: auto;
+}
+
+.chart-placeholder h4 {
+  margin-top: 0;
+  color: var(--text-primary);
+}
+
+.chart-placeholder p {
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-md);
+}
+
+.chart-placeholder pre {
+  background-color: rgba(var(--bg-tertiary-rgb), 0.5);
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  overflow: auto;
+  color: var(--text-primary);
+  font-size: var(--font-size-xs);
+}
+
+/* 顶部栏样式 */
+.header-actions {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.header-btn {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.header-btn:hover {
+  background-color: var(--bg-tertiary);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 5px var(--shadow-primary);
+}
+
+/* 拓展栏管理按钮样式 - 位于右侧栏外左上角，与顶部栏和右侧栏边界精确相切 */
+.extension-panel-toggle {
+  position: absolute;
+  top: 0; /* 顶部与main-body顶部对齐，即header底部 */
+  right: 500px; /* 右侧与右侧栏左侧相切（右侧栏最大宽度） */
+  background-color: var(--accent-color);
+  color: var(--bg-primary);
+  border: 1px solid var(--text-primary);
+  border-top: 1px solid var(--border-primary); /* 与header底部边框颜色一致 */
+  border-radius: 0;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  box-shadow: 0 0 15px var(--shadow-primary);
+  transition: all var(--transition-normal);
+  z-index: 1002; /* 确保按钮在header之上，可见 */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  line-height: 1;
+}
+
+.extension-panel-toggle:hover {
+  background-color: var(--accent-hover);
+  transform: scale(1.1);
+  box-shadow: 0 0 20px var(--shadow-primary);
+}
+
+.extension-panel-toggle.active {
+  background-color: var(--highlight-color);
+  border-color: var(--text-primary);
+  transform: scale(1.05);
+}
+
+/* 响应式设计 - 适配不同屏幕尺寸 */
+@media (max-width: 1200px) {
+  .extension-panel-toggle {
+    right: 38.2%;
+    top: 0; /* 保持与main-body顶部对齐 */
+  }
+}
+
+@media (max-width: 768px) {
+  .extension-panel-toggle {
+    right: 100%;
+    top: 0; /* 保持与main-body顶部对齐 */
+  }
+
+  .extension-panel-toggle:hover {
+    transform: scale(1.1);
+  }
+
+  .extension-panel-toggle.active {
+    transform: scale(1.05);
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  /* 柱状图拓展栏响应式 */
+  .chart-extension-panel {
+    width: 100%;
+    right: 0;
+    top: auto;
+    bottom: 0;
+    height: 300px;
+    transform: translateY(100%);
+    border-left: none;
+    border-top: 1px solid var(--border-primary);
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+  }
+
+  .chart-extension-panel.open {
+    transform: translateY(0);
+  }
+
+  /* 右侧栏响应式 */
+  .sidebar-wrapper {
+    position: fixed;
+    width: 100%;
+    right: 0;
+    top: var(--header-height);
+    height: calc(100vh - var(--header-height));
+    transform: translateX(100%);
+    transition: transform var(--transition-normal);
+  }
+
+  .sidebar-wrapper.open {
+    transform: translateX(0);
+  }
+
+  /* 顶部栏响应式 */
+  .header-content {
+    padding: 0 var(--spacing-md);
+  }
+
+  .header-title {
+    font-size: var(--font-size-lg) !important;
+  }
+
+  .header-actions {
+    gap: var(--spacing-sm);
+  }
+
+  .header-btn {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-xs);
+  }
+}

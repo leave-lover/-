@@ -1,0 +1,184 @@
+.defense-simulation-panel {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  overflow: hidden; /* 确保整个面板内容不会溢出 */
+}
+
+.panel-header {
+  padding: 16px;
+  border-bottom: 1px solid var(--border-primary);
+  background-color: var(--bg-tertiary);
+}
+
+.panel-header h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.panel-content {
+  flex: 1;
+  padding: 15px; /* 减少内边距，适应窄容器 */
+  overflow-y: auto;
+  overflow-x: hidden; /* 防止横向滚动条 */
+  box-sizing: border-box; /* 确保padding不会导致内容溢出 */
+  width: 100%; /* 确保内容宽度不超过父容器 */
+  max-width: 100%; /* 确保内容宽度不超过父容器 */
+}
+
+.placeholder-content {
+  text-align: center;
+  padding: 20px; /* 减少内边距，适应窄容器 */
+  background-color: var(--bg-tertiary);
+  border-radius: 8px;
+  border: 1px dashed var(--border-primary);
+  width: 100%; /* 确保宽度适应父容器 */
+  max-width: 100%; /* 确保宽度不超过父容器 */
+  box-sizing: border-box; /* 确保padding不会导致内容溢出 */
+}
+
+.construction-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+.placeholder-content h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.placeholder-content p {
+  margin: 0;
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+/* 防御控制区域样式 */
+.defense-controls {
+  width: 100%;
+  box-sizing: border-box; /* 确保内容不会溢出 */
+}
+
+.defense-controls h3 {
+  margin: 0 0 15px 0;
+  font-size: 1.1rem; /* 调整字体大小，适应窄容器 */
+  color: #fff;
+  word-break: break-word; /* 防止长标题溢出 */
+}
+
+.strategy-options {
+  display: flex;
+  flex-direction: column; /* 始终显示为单列，适应窄容器 */
+  gap: 15px; /* 减小间距，适应窄容器 */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.strategy-option {
+  background-color: var(--bg-tertiary);
+  padding: 15px; /* 减少内边距，适应窄容器 */
+  border-radius: 8px;
+  border: 1px solid var(--border-primary);
+  transition: all 0.3s ease;
+  width: 100%;
+  box-sizing: border-box; /* 确保padding不会导致内容溢出 */
+  max-width: 100%; /* 确保不会超过父容器宽度 */
+  overflow: hidden; /* 确保内容不会溢出 */
+}
+
+.strategy-option:hover {
+  border-color: #007bff;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+}
+
+.strategy-option h4 {
+  margin: 0 0 8px 0;
+  font-size: 1rem; /* 调整字体大小，适应窄容器 */
+  color: #fff;
+  word-break: break-word; /* 防止长标题溢出 */
+}
+
+.strategy-option p {
+  margin: 0 0 12px 0;
+  color: #ccc;
+  font-size: 0.85rem; /* 调整字体大小，适应窄容器 */
+  line-height: 1.4;
+  word-break: break-word; /* 防止长文本溢出 */
+}
+
+/* 确保在所有屏幕尺寸下都使用单列布局 */
+@media (min-width: 768px) {
+  .strategy-options {
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 1024px) {
+  .strategy-options {
+    flex-direction: column;
+  }
+}
+
+/* 防御按钮样式 */
+.defense-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.defense-button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.defense-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.defense-button.primary {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.defense-button.primary:hover {
+  background-color: #0056b3;
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.4);
+}
+
+.defense-button.secondary {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.defense-button.secondary:hover:not(:disabled) {
+  background-color: #5a6268;
+  box-shadow: 0 4px 8px rgba(108, 117, 125, 0.4);
+}
+
+/* 清空防御结果区域样式 */
+.clear-results-section {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  border: 1px solid var(--border-primary);
+}
+
+.clear-results-description {
+  margin: 10px 0 0 0;
+  color: #ccc;
+  font-size: 0.85rem;
+  text-align: center;
+}

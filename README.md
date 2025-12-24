@@ -1,236 +1,258 @@
 # 能源防御与攻击平台
 
-## 项目简介
+一个用于能源系统拓扑可视化、攻击模拟和优化的综合平台。
 
-能源防御与攻击平台是一个综合性的能源系统监控、分析和防御平台，采用前后端分离架构，具备以下核心功能：
+## 项目概述
 
-1. 基于深度学习的能源系统异常检测与防御
-2. 能源网络拓扑可视化（电力网络和天然气网络）
-3. 实时监测能源系统运行状态，检测异常行为
-4. 提供丰富的可视化分析工具
+能源防御与攻击平台是一个集前端可视化、后端计算和数据分析于一体的综合系统，用于研究和分析能源系统（电力系统和天然气系统）的脆弱性、攻击场景和优化策略。
 
-## 技术栈
+该平台支持：
 
-### 前端技术栈
-
-- **React 18** : 用户界面框架
-- **TypeScript** : 类型安全
-- **Vite** : 快速构建工具
-- **Recharts** : 基础数据可视化图表库
-- **React-Plotly.js** : 交互式科学可视化图表
-- **TailwindCSS** : 样式框架
-- **Lucide React** : 现代化图标库
-
-### 后端技术栈
-
-- **Flask** : Python Web 框架
-- **Flask-CORS** : 跨域支持
-- **TensorFlow/Keras** : 深度学习框架
-- **NumPy/Pandas** : 数据处理
-- **Scikit-learn** : 机器学习工具
-
-## 环境要求
-
-- Python 3.8+
-- Node.js 16+
-- npm 或 yarn
-
-## 安装步骤
-
-### 1. 安装 Python 依赖
-
-```bash
-cd backend
-pip install -r requirements.txt
-```
-
-### 2. 安装 Node.js 依赖
-
-```bash
-cd frontend
-npm install
-
-# 如果安装失败，清理缓存后重试
-npm cache clean --force
-npm install
-```
-
-### 3. 准备数据文件
-
-将以下文件放入 `backend/data/` 目录：
-
-- `after.csv` - 特征数据 (59 列)
-- `tabels.csv` - 标签数据 (二分类: 0/1)
-
-对于拓扑图可视化功能，还需要以下文件（放在 `backend/data/raw/` 目录）：
-
-- `power_grid_data.xlsx` - 电力网络数据
-- `gas_network_data.xlsx` - 天然气网络数据
-
-### 4. 启动服务
-
-#### 方式一: 同时启动前后端 (推荐)
-
-```bash
-npm run dev:all
-```
-
-使用 `concurrently` 工具同时启动前后端，输出日志会合并显示。
-
-#### 方式二: 分别启动
-
-```bash
-# 终端1: 启动后端
-cd backend && python app.py
-
-# 终端2: 启动前端
-npx vite --port 5173 --host 0.0.0.0
-```
-
-#### 方式三: 后台启动
-
-```bash
-# 后台启动后端
-cd backend && python app.py &
-
-# 启动前端 (前台)
-npx vite --port 5173 --host 0.0.0.0
-```
-
-#### 首次启动准备
-
-首次启动前，请确保已处理能源网络数据：
-
-```bash
-# 在frontend目录下运行
-npm run process:data
-```
-
-或者直接运行 Python 脚本：
-
-```bash
-cd backend
-python data_processor.py
-```
-
-这将生成拓扑图所需的 JSON 数据文件。
-
-## 访问系统
-
-- 前端地址: http://localhost:5173 (或自动分配的端口)
-- 后端 API: http://localhost:5000
+- 能源系统拓扑的交互式可视化
+- 多种攻击场景的模拟与分析
+- 系统优化算法的实现与展示
+- 数据分析和报告生成
+- 电力系统与天然气系统的耦合分析
 
 ## 项目结构
 
 ```
-项目根目录/
-├── backend/                    # 后端Python代码
-│   ├── app.py                 # Flask主应用 & HTTP路由
-│   ├── training_service.py    # 训练状态管理服务
-│   ├── data_service.py        # 数据读写管理服务
-│   ├── data_processor.py      # 能源网络数据处理脚本
-│   ├── models/                # CNN模型实现
-│   │   └── CNN_2_with_callback.py
-│   ├── output/                # 输出数据目录
-│   │   └── anomaly_data.json  # 异常检测结果 (JSON格式)
-│   ├── data/                  # 原始数据文件目录
-│   │   ├── raw/               # 原始数据
-│   │   ├── processed/         # 处理后的数据
-│   │   └── normalized/        # 归一化后的数据
-│   └── requirements.txt       # Python依赖配置
-│
-├── frontend/                   # 前端React代码
-│   ├── src/                   # 前端源码
-│   │   ├── components/        # React组件
-│   │   │   ├── Sidebar.tsx    # 侧边栏
-│   │   │   ├── MetricCard.tsx # 指标卡片
-│   │   │   ├── TimeStepChart.tsx # 时间序列图
-│   │   │   ├── MeterStatusTable.tsx # 状态表格
-│   │   │   ├── TopologyGraph.tsx # 能源网络拓扑图组件
-│   │   │   └── tabs/          # 标签页组件
-│   │   ├── hooks/             # 自定义Hooks
-│   │   │   └── useTrainingState.ts # 训练状态管理 (轮询机制)
-│   │   └── lib/               # 工具库
-│   │       └── api.ts         # API接口
-│   ├── index.html             # HTML入口
-│   ├── package.json           # 前端依赖配置
-│   ├── tsconfig.json          # TypeScript配置
-│   ├── vite.config.ts         # Vite配置
-│   └── dist/                  # 构建输出目录
-│
-└── README.md                  # 项目文档
+energy-defense-platform/
+├── backend/                    # 后端服务
+│   ├── app.py                  # 主应用入口
+│   ├── data/                   # 数据文件
+│   ├── data_processor.py       # 数据处理模块
+│   ├── index.js                # Node.js入口（可选）
+│   ├── package.json            # Node.js依赖
+│   ├── package-lock.json       # Node.js依赖锁定
+│   ├── requirements_conda.txt  # Conda依赖
+│   ├── requirements_minimal.txt # 最小化依赖
+│   └── vulnerability_assessment.py # 脆弱性评估模块
+├── frontend/                   # 前端应用
+│   ├── src/                    # 源代码
+│   │   ├── modules/            # 功能模块
+│   │   ├── styles/             # 样式文件
+│   │   └── types/              # 类型定义
+│   ├── index.html              # HTML入口
+│   ├── package.json            # npm依赖
+│   ├── package-lock.json       # npm依赖锁定
+│   ├── README.md               # 前端文档
+│   ├── tsconfig.json           # TypeScript配置
+│   ├── tsconfig.node.json      # TypeScript Node配置
+│   └── vite.config.ts          # Vite配置
+├── .gitignore                  # Git忽略配置
+├── start-all.bat               # Windows启动脚本
+├── start-all.ps1               # PowerShell启动脚本
+└── README.md                   # 项目主文档
 ```
 
-## API 接口说明
+## 技术栈
 
-### 拓扑图数据接口
+### 前端
 
-| 接口地址                 | 请求方法 | 描述                   |
-| ------------------------ | -------- | ---------------------- |
-| `/api/topology/electric` | GET      | 获取电力网络拓扑数据   |
-| `/api/topology/gas`      | GET      | 获取天然气网络拓扑数据 |
+- **框架**: React 18
+- **语言**: TypeScript
+- **构建工具**: Vite 5
+- **可视化库**: act-force-graph-2d, recharts
 
-### 返回数据格式
+### 后端
 
-```json
-{
-  "nodes": [
-    {
-      "id": "node1",
-      "group": "electric", // 或 "gas"
-      "name": "变电站A"
-    }
-  ],
-  "links": [
-    {
-      "source": "node1",
-      "target": "node2",
-      "value": 100 // 连接强度或容量
-    }
-  ]
-}
+- **语言**: Python 3.8+, JavaScript
+- **Web 框架**: Flask
+- **计算库**: NumPy, Pandas, SciPy
+- **优化求解器**: Gurobi/PuLP
+
+## 核心功能
+
+### 1. 拓扑可视化展示
+
+- 交互式能源系统拓扑图
+- 支持电力和天然气系统的耦合展示
+- 节点和边的详细信息查询
+- 拓扑图的缩放、平移和旋转
+- 攻击路径的可视化
+
+### 2. 攻击模拟
+
+- 多种攻击场景的模拟
+- 实时显示攻击效果
+- 攻击算法的实现与分析
+- 攻击路径的可视化展示
+
+### 3. 防御模拟
+
+- 多种防御策略的模拟
+- 实时显示防御效果
+- 防御算法的实现与分析
+
+### 4. 系统分析
+
+- 统计分析
+- 报告生成
+- 脆弱性分析
+- 参数敏感性分析
+- 优化算法的实现
+- 数据导入和导出
+
+## 安装与配置
+
+### 前置要求
+
+- **前端**: Node.js 18+, npm 9+
+- **后端**: Python 3.8+, pip
+
+### 快速启动
+
+#### 使用启动脚本（推荐）
+
+Windows 系统:
+
+```bash
+start-all.bat
 ```
 
-## 功能说明
+PowerShell:
 
-### 能源网络拓扑可视化
+```bash
+start-all.ps1
+```
 
-平台新增了能源网络拓扑可视化功能，可以直观地展示电力网络和天然气网络的结构关系。该功能具有以下特点：
+#### 手动启动
 
-1. **双网络展示**：在同一界面中展示电力网络和天然气网络的拓扑结构
-2. **力导向布局**：使用 D3 力导向算法自动计算节点位置，使网络结构更加清晰
-3. **交互式操作**：支持节点拖拽、缩放、平移等交互操作
-4. **节点分类**：不同类型节点使用不同颜色标识（电力节点为蓝色，天然气节点为橙色）
-5. **实时统计**：动态显示网络统计信息（节点数量、连接数量等）
+1. **启动后端服务**:
 
-### 异常检测与防御
+   ```bash
+   cd backend
+   python app.py
+   ```
 
-基于深度学习的异常检测模型，能够实时监测能源系统的运行状态，识别潜在的安全威胁和异常行为。
+2. **启动前端开发服务器**:
 
-## 开发说明
+   ```bash
+   cd frontend
+   npm install
+   npm run dev
+   ```
+
+3. **构建生产版本**:
+
+   ```bash
+   cd frontend
+   npm run build
+   ```
+
+### 依赖安装
+
+#### 前端依赖
+
+```bash
+cd frontend
+npm install
+```
+
+#### 后端依赖
+
+```bash
+cd backend
+pip install -r requirements_minimal.txt
+# 或使用conda
+conda install --file requirements_conda.txt
+```
+
+## 开发指南
 
 ### 前端开发
 
-```bash
-# 启动开发服务器
-npm run dev
+1. 进入前端目录:
 
-# 构建生产版本
-npm run build
+   ```bash
+   cd frontend
+   ```
 
-# 预览生产版本
-npm run preview
-```
+2. 安装依赖:
+
+   ```bash
+   npm install
+   ```
+
+3. 启动开发服务器:
+
+   ```bash
+   npm run dev
+   ```
+
+4. 构建生产版本:
+
+   ```bash
+   npm run build
+   ```
 
 ### 后端开发
 
-```bash
-# 启动开发服务器
-cd backend
-python app.py
-```
+1. 进入后端目录:
 
-## 注意事项
+   ```bash
+   cd backend
+   ```
+
+2. 安装依赖:
+
+   ```bash
+   pip install -r requirements_minimal.txt
+   ```
+
+3. 启动开发服务器:
+
+   ```bash
+   python app.py
+   ```
+
+## 功能模块说明
+
+### 1. 拓扑可视化模块
+
+负责能源系统拓扑图的展示和交互，支持电力系统和天然气系统的耦合展示。
+
+### 2. 攻击模拟模块
+
+实现多种攻击场景的模拟，包括节点攻击、边攻击等，实时显示攻击效果。
+
+### 3. 防御模拟模块
+
+实现多种防御策略的模拟，包括节点加固、边保护等，实时显示防御效果。
+
+### 4. 数据分析模块
+
+负责系统数据的分析和可视化，包括统计分析、脆弱性分析、参数敏感性分析等。
+
+### 5. 系统优化模块
+
+实现系统优化算法，包括成本优化、可靠性优化等。
+
+## 项目优化
+
+### 优化内容
+
+1. **项目结构优化**:
+
+   - 清理了根目录中的冗余文件
+   - 优化了后端目录结构
+   - 简化了项目结构，提高了可维护性
+
+2. **冗余文件移除**:
+
+   - 移除了根目录中的临时文件和数据文件
+   - 移除了未使用的代码文件
+   - 清理了虚拟环境和依赖目录（通过.gitignore 管理）
+
+3. **代码优化**:
+   - 优化了前端代码结构
+   - 简化了后端代码实现
+   - 提高了代码的可维护性和可读性
+
+## 致谢
+
+感谢所有为该项目做出贡献的团队成员和社区开发者。
 
 ## 许可证
 

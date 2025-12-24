@@ -1,0 +1,42 @@
+{
+  "generatorOutput": [
+    {
+      "id": "g1",
+      "name": "发电机1",
+      "output": 100,
+      "unit": "MW",
+      "type": "electric"
+    },
+    {
+      "id": "g2",
+      "name": "发电机2",
+      "output": 150,
+      "unit": "MW",
+      "type": "electric"
+    }
+  ],
+  "flowDistribution": [
+    {
+      "id": "line1",
+      "name": "线路1",
+      "flow": 80,
+      "unit": "MW",
+      "type": "electric"
+    }
+  ],
+  "nodeStatus": [
+    {
+      "id": "n1",
+      "name": "节点1",
+      "value": 220,
+      "unit": "kV",
+      "type": "electric"
+    }
+  ],
+  "systemCost": {
+    "generationCost": 10000,
+    "transmissionCost": 2000,
+    "totalCost": 12000,
+    "unit": "元"
+  }
+}

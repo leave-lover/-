@@ -1,0 +1,1 @@
+[{"iteration":1,"cost":5.4809,"efficiency":95,"timestamp":"","details":{"networkRouting":0.7449,"resourceAllocation":7.25,"dataCompression":6.52,"cacheStrategy":0.0,"loadBalancing":1.5233}},{"iteration":2,"cost":6.8058,"efficiency":95,"timestamp":"","details":{"networkRouting":0.6923,"resourceAllocation":6.9484,"dataCompression":6.52,"cacheStrategy":0.0,"loadBalancing":0.5}}]
